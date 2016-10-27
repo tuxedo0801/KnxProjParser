@@ -235,19 +235,18 @@
         <xsd:attribute name="ReadFlag" type="xsd:string"/>
         <xsd:attribute name="TransmitFlag" type="xsd:string"/>
         <xsd:attribute name="ReadOnInitFlag" type="xsd:string"/>
+        <xsd:attribute name="UpdateFlag" type="xsd:string"/>
     </xsd:complexType>
-    <xsd:complexType name="Connectors">
+        <xsd:complexType name="Connectors">
         <xsd:sequence>
-            <xsd:element name="Send" type="tns:Send" maxOccurs="unbounded" minOccurs="0"/>
-            <xsd:element name="Receive" type="tns:Receive" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="Send" type="tns:GroupAddressReference" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="Receive" type="tns:GroupAddressReference" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
     </xsd:complexType>
-    <xsd:complexType name="Send">
+    <xsd:complexType name="GroupAddressReference">
         <xsd:attribute name="GroupAddressRefId" type="xsd:string"/>
     </xsd:complexType>
-    <xsd:complexType name="Receive">
-        <xsd:attribute name="GroupAddressRefId" type="xsd:string"/>
-    </xsd:complexType>
+
     
     <!-- M-.....xml -->
     <xsd:complexType name="ManufacturerData">

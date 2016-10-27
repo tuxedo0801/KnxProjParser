@@ -25,6 +25,7 @@ import java.io.FileFilter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -39,6 +40,7 @@ import org.knx.xml.project._12.ComObjectRefs;
 import org.knx.xml.project._12.Connectors;
 import org.knx.xml.project._12.DeviceInstance;
 import org.knx.xml.project._12.GroupAddress;
+import org.knx.xml.project._12.GroupAddressReference;
 import org.knx.xml.project._12.GroupAddresses;
 import org.knx.xml.project._12.GroupRange;
 import org.knx.xml.project._12.Installation;
@@ -46,7 +48,6 @@ import org.knx.xml.project._12.KNX;
 import org.knx.xml.project._12.Line;
 import org.knx.xml.project._12.Project;
 import org.knx.xml.project._12.ProjectInformation;
-import org.knx.xml.project._12.Send;
 import org.knx.xml.project._12.Static;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -112,21 +113,21 @@ public class Project12 extends AbstractKnxParser<KNX> {
             KNX projectXML = readXML(projectFile, KNX.class);
             log.debug("CreatedBy={}", projectXML.getCreatedBy());
             log.debug("ToolVersion={}", projectXML.getToolVersion());
-            
+
             project.setCreatedBy(projectXML.getCreatedBy());
             project.setToolVersion(projectXML.getToolVersion());
 
             Project project = projectXML.getProject();
             ProjectInformation projectInformation = project.getProjectInformation();
             log.debug("Name={}", projectInformation.getName());
-            
+
             if (projectInformation.getLastModified() != null) {
                 log.debug("LastModified={}", projectInformation.getLastModified().toGregorianCalendar().getTime());
                 this.project.setLastModified(projectInformation.getLastModified().toGregorianCalendar().getTime());
             }
 
             this.project.setName(projectInformation.getName());
-            if (projectInformation.getProjectStart()!=null) {
+            if (projectInformation.getProjectStart() != null) {
                 this.project.setProjectStart(projectInformation.getProjectStart().toGregorianCalendar().getTime());
             }
 
@@ -171,16 +172,21 @@ public class Project12 extends AbstractKnxParser<KNX> {
                                 String comObjInstanceRefId = comObjectInstanceRef.getRefId();
                                 Connectors connectors = comObjectInstanceRef.getConnectors();
                                 if (connectors != null) {
-                                    List<Send> sendList = connectors.getSend();
-                                    for (Send send : sendList) {
+                                    List<GroupAddressReference> sendList = connectors.getSend();
+                                    List<GroupAddressReference> receiveList = connectors.getReceive();
+                                    List<GroupAddressReference> list = new ArrayList<>();
+                                    list.addAll(sendList);
+                                    list.addAll(receiveList);
+                                    for (GroupAddressReference ref : list) {
 
-                                        String groupAddressRefId = send.getGroupAddressRefId();
+                                        String groupAddressRefId = ref.getGroupAddressRefId();
                                         GroupAddressContainer gac = gaId_to_ga_Map.get(groupAddressRefId);
 
                                         log.debug("ComObj {} is connected to {}", comObjInstanceRefId, gac.getGa());
                                         ga_to_comObjInstanceRefId_map.put(gac, comObjInstanceRefId);
                                     }
                                 }
+
                             }
                         }
                     }
@@ -226,7 +232,7 @@ public class Project12 extends AbstractKnxParser<KNX> {
                             log.debug("Found ComObject id={}", comObject.getId());
                         }
                     }
-                    
+
                     ComObjectRefs comObjectRefs = aStatic.getComObjectRefs();
                     if (comObjectRefs != null) {
                         List<ComObjectRef> comObjectRefList = comObjectRefs.getComObjectRef();
@@ -266,9 +272,9 @@ public class Project12 extends AbstractKnxParser<KNX> {
                 de.root1.knxprojparser.GroupAddress ga = new de.root1.knxprojparser.GroupAddress(groupAddressContainer.getGa(), groupAddressContainer.getName(), dpt);
                 gaList.add(ga);
             }
-            
+
             this.project.setGroupaddressList(gaList);
-            parsed=true;
+            parsed = true;
 
         } catch (JAXBException | SAXException ex) {
             throw new ParseException("Error parsing", ex);
@@ -285,7 +291,7 @@ public class Project12 extends AbstractKnxParser<KNX> {
             if (line.contains("http://knx.org/xml/project/12")) {
                 return true;
             }
-            
+
         } catch (FileNotFoundException ex) {
         } catch (IOException ex) {
         }

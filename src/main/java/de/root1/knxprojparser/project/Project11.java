@@ -25,6 +25,7 @@ import java.io.FileFilter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -39,6 +40,7 @@ import org.knx.xml.project._11.ComObjectRefs;
 import org.knx.xml.project._11.Connectors;
 import org.knx.xml.project._11.DeviceInstance;
 import org.knx.xml.project._11.GroupAddress;
+import org.knx.xml.project._11.GroupAddressReference;
 import org.knx.xml.project._11.GroupAddresses;
 import org.knx.xml.project._11.GroupRange;
 import org.knx.xml.project._11.Installation;
@@ -46,7 +48,6 @@ import org.knx.xml.project._11.KNX;
 import org.knx.xml.project._11.Line;
 import org.knx.xml.project._11.Project;
 import org.knx.xml.project._11.ProjectInformation;
-import org.knx.xml.project._11.Send;
 import org.knx.xml.project._11.Static;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -174,10 +175,14 @@ public class Project11 extends AbstractKnxParser<KNX> {
                                 String comObjInstanceRefId = comObjectInstanceRef.getRefId();
                                 Connectors connectors = comObjectInstanceRef.getConnectors();
                                 if (connectors != null) {
-                                    List<Send> sendList = connectors.getSend();
-                                    for (Send send : sendList) {
+                                    List<GroupAddressReference> sendList = connectors.getSend();
+                                    List<GroupAddressReference> receiveList = connectors.getReceive();
+                                    List<GroupAddressReference> list = new ArrayList<>();
+                                    list.addAll(sendList);
+                                    list.addAll(receiveList);
+                                    for (GroupAddressReference ref : list) {
 
-                                        String groupAddressRefId = send.getGroupAddressRefId();
+                                        String groupAddressRefId = ref.getGroupAddressRefId();
                                         GroupAddressContainer gac = gaId_to_ga_Map.get(groupAddressRefId);
 
                                         log.debug("ComObj {} is connected to {}", comObjInstanceRefId, gac.getGa());
