@@ -43,6 +43,9 @@
         <xsd:attribute name="Id" type="xsd:ID"/>
     </xsd:complexType>
     <xsd:complexType name="ProjectInformation">
+        <xsd:all>
+            <xsd:element name="HistoryEntries" type="tns:HistoryEntries" minOccurs="0"/>
+        </xsd:all>
         <xsd:attribute name="Name" type="xsd:string"/>
         <xsd:attribute name="LastModified" type="xsd:dateTime"/>
         <xsd:attribute name="ProjectStart" type="xsd:dateTime"/>
@@ -54,6 +57,10 @@
         <xsd:attribute name="LastUsedPuid" type="xsd:string"/>
         <xsd:attribute name="Guid" type="xsd:string"/>
         <xsd:attribute name="CodePage" type="xsd:string"/>
+        <xsd:attribute name="ProjectNumber" type="xsd:string"/>
+        <xsd:attribute name="ContractNumber" type="xsd:string"/>
+        <xsd:attribute name="ProjectPassword" type="xsd:string"/>
+        <xsd:attribute name="Comment" type="xsd:string"/>
     </xsd:complexType>
     <xsd:complexType name="Installations">
         <xsd:sequence>
@@ -125,6 +132,7 @@
         <xsd:attribute name="RangeStart" type="xsd:int"/>
         <xsd:attribute name="RangeEnd" type="xsd:int"/>
         <xsd:attribute name="Puid" type="xsd:string"/>
+        <xsd:attribute name="Description" type="xsd:string"/>
     </xsd:complexType>
     
     <xsd:complexType name="GroupAddress">
@@ -133,6 +141,7 @@
         <xsd:attribute name="Name" type="xsd:string"/>
         <xsd:attribute name="Puid" type="xsd:string"/>
         <xsd:attribute name="Description" type="xsd:string"/>
+        <xsd:attribute name="Comment" type="xsd:string"/>
     </xsd:complexType>
     <xsd:complexType name="Area">
         <xsd:sequence>
@@ -143,6 +152,7 @@
         <xsd:attribute name="Address" type="xsd:string"/>
         <xsd:attribute name="CompletionStatus" type="xsd:string"/>
         <xsd:attribute name="Puid" type="xsd:string"/>
+        <xsd:attribute name="Description" type="xsd:string"/>
     </xsd:complexType>
     <xsd:complexType name="Line">
         <xsd:sequence minOccurs="0" maxOccurs="1">
@@ -172,6 +182,8 @@
         <xsd:attribute name="IPRoutingMulticastAddress" type="xsd:string"/>
         <xsd:attribute name="MulticastTTL" type="xsd:string"/>
         <xsd:attribute name="Puid" type="xsd:string"/>
+        <xsd:attribute name="Comment" type="xsd:string"/>
+        <xsd:attribute name="Description" type="xsd:string"/>
     </xsd:complexType>
     <xsd:complexType name="DeviceInstance">
         <xsd:sequence>
@@ -198,6 +210,7 @@
         <xsd:attribute name="CheckSums" type="xsd:string"/>
         <xsd:attribute name="Description" type="xsd:string"/>
         <xsd:attribute name="Comment" type="xsd:string"/>
+        <xsd:attribute name="InstallationHints" type="xsd:string"/>
     </xsd:complexType>
     <xsd:complexType name="ParameterInstanceRefs">
         <!-- ignore any content of this Element -->
@@ -220,6 +233,8 @@
         <xsd:attribute name="DatapointType" type="xsd:string"/>
         <xsd:attribute name="Description" type="xsd:string"/>
         <xsd:attribute name="ReadFlag" type="xsd:string"/>
+        <xsd:attribute name="TransmitFlag" type="xsd:string"/>
+        <xsd:attribute name="ReadOnInitFlag" type="xsd:string"/>
     </xsd:complexType>
     <xsd:complexType name="Connectors">
         <xsd:sequence>
@@ -377,6 +392,7 @@
         </xsd:sequence>
         <xsd:attribute name="RequiresExternalSoftware" type="xsd:string"/>
         <xsd:attribute name="EtsDownloadPlugin" type="xsd:string"/>
+        <xsd:attribute name="EtsUiPlugin" type="xsd:string"/>
     </xsd:complexType>
     <xsd:complexType name="Options">
         <!-- ignore any content of this Element -->
@@ -457,5 +473,10 @@
         <xsd:attribute name="TransmitFlag" type="xsd:string"/>
         <xsd:attribute name="Name" type="xsd:string"/>
     </xsd:complexType>
-
+    <xsd:complexType name="HistoryEntries">
+        <!-- ignore any content of this Element -->
+        <xsd:sequence maxOccurs="unbounded" minOccurs="0">
+            <xsd:any processContents="lax"/>
+        </xsd:sequence>
+    </xsd:complexType>    
 </xsd:schema>

@@ -119,14 +119,18 @@ public class Project11 extends AbstractKnxParser<KNX> {
             Project project = projectXML.getProject();
             ProjectInformation projectInformation = project.getProjectInformation();
             log.debug("Name={}", projectInformation.getName());
-            log.debug("LastModified={}", projectInformation.getLastModified().toGregorianCalendar().getTime());
+
+            if (projectInformation.getLastModified() != null) {
+                log.debug("LastModified={}", projectInformation.getLastModified().toGregorianCalendar().getTime());
+                this.project.setLastModified(projectInformation.getLastModified().toGregorianCalendar().getTime());
+            }
 
             this.project.setName(projectInformation.getName());
-            this.project.setLastModified(projectInformation.getLastModified().toGregorianCalendar().getTime());
-            this.project.setProjectStart(projectInformation.getProjectStart().toGregorianCalendar().getTime());
+            if (projectInformation.getProjectStart()!=null) {
+                this.project.setProjectStart(projectInformation.getProjectStart().toGregorianCalendar().getTime());
+            }
 
-            String projectId = projectInformation.getProjectId();
-            File idProjectFile = new File(projectFolder, projectId + ".xml");
+            File idProjectFile = new File(projectFolder, "0.xml");
 
             KNX idProjectXML = readXML(idProjectFile, KNX.class);
             Installation installation = idProjectXML.getProject().getInstallations().getInstallation();
