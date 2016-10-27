@@ -300,9 +300,10 @@
             <xsd:element name="ComObjectRefs" type="tns:ComObjectRefs" minOccurs="0"/>
             <xsd:element name="AddressTable" type="tns:AddressTable" minOccurs="0"/>
             <xsd:element name="AssociationTable" type="tns:AssociationTable" minOccurs="0"/>
-            <xsd:element name="LoadProcedures" type="tns:LoadProcedures"/>
-            <xsd:element name="Extension" type="tns:Extension"/>
-            <xsd:element name="Options" type="tns:Options"/>
+            <xsd:element name="LoadProcedures" type="tns:LoadProcedures" minOccurs="0"/>
+            <xsd:element name="Extension" type="tns:Extension" minOccurs="0"/>
+            <xsd:element name="Options" type="tns:Options" minOccurs="0"/>
+            <xsd:element name="DeviceCompare" type="tns:DeviceCompare" minOccurs="0"/>
         </xsd:all>
     </xsd:complexType>
     
@@ -416,6 +417,7 @@
         <xsd:attribute name="LineCoupler0912NewProgrammingStyle" type="xsd:string"/>
         <xsd:attribute name="TextParameterEncodingSelector" type="xsd:string"/>
         <xsd:attribute name="TextParameterEncoding" type="xsd:string"/>
+        <xsd:attribute name="Comparable" type="xsd:string"/>
     </xsd:complexType>
     <xsd:complexType name="Languages">
         <!-- ignore any content of this Element -->
@@ -470,5 +472,11 @@
         <xsd:sequence maxOccurs="unbounded" minOccurs="0">
             <xsd:any processContents="lax"/>
         </xsd:sequence>
-    </xsd:complexType>    
+    </xsd:complexType>
+    <xsd:complexType name="DeviceCompare">
+        <!-- ignore any content of this Element -->
+        <xsd:sequence maxOccurs="unbounded" minOccurs="0">
+            <xsd:any processContents="lax"/>
+        </xsd:sequence>
+    </xsd:complexType>
 </xsd:schema>

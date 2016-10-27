@@ -80,7 +80,7 @@ public class KnxProjParser {
 
     public KnxProjParser(File knxprojFile) throws FileNotFoundException {
         if (!knxprojFile.exists()) {
-            throw new FileNotFoundException("File does not exist: "+knxprojFile.getAbsolutePath());
+            throw new FileNotFoundException("File does not exist: " + knxprojFile.getAbsolutePath());
         }
         this.knxprojFile = knxprojFile;
     }
@@ -152,7 +152,9 @@ public class KnxProjParser {
     }
 
     public Project getProject() {
-        if (parser==null || !parser.isParsed()) return null;
+        if (parser == null || !parser.isParsed()) {
+            return null;
+        }
         return parser.getProject();
     }
 
@@ -167,9 +169,9 @@ public class KnxProjParser {
         }
         log.debug("newChecksum={}", newChecksum);
 
-        KnxProj knxproj=null;
+        KnxProj knxproj = null;
 
-        if (outfile.exists() && outfile.length()>0) {
+        if (outfile.exists() && outfile.length() > 0) {
 
             log.info("outfile exists.");
             try {
@@ -186,16 +188,16 @@ public class KnxProjParser {
                 }
 
             } catch (JAXBException | SAXException ex) {
-                log.warn("Error reading file "+outfile.getAbsolutePath()+". Forcing new file.", ex);
+                log.warn("Error reading file " + outfile.getAbsolutePath() + ". Forcing new file.", ex);
             }
 
         } else {
             log.debug("outfile does not exist or is empty. Creating one ..");
             knxproj = createNewKnxProj();
         }
-        
+
         // at this stage it's clear, that project has to be parsed, either due to update or new
-        if (parser== null || !parser.isParsed()) {
+        if (parser == null || !parser.isParsed()) {
             log.debug("Parsing ...");
             try {
                 parse();
@@ -204,19 +206,23 @@ public class KnxProjParser {
             }
             log.debug("Parsing ... *DONE*");
         }
-        
+
         Project parsed = getProject();
         EtsDefined etsDefined = knxproj.getEtsDefined();
         etsDefined.setChecksum(newChecksum);
         de.root1.schema.knxproj._1.Project project = etsDefined.getProject();
-        
+
         // setting project information
         project.setCreatedBy(parsed.getCreatedBy());
         project.setToolVersion(parsed.getToolVersion());
         project.setName(parsed.getName());
         try {
-            project.setLastModified(Utils.dateToXmlDateTime(parsed.getLastModified()));
-            project.setProjectStarted(Utils.dateToXmlDateTime(parsed.getProjectStart()));
+            if (parsed.getLastModified() != null) {
+                project.setLastModified(Utils.dateToXmlDateTime(parsed.getLastModified()));
+            }
+            if (parsed.getProjectStart() != null) {
+                project.setProjectStarted(Utils.dateToXmlDateTime(parsed.getProjectStart()));
+            }
         } catch (DatatypeConfigurationException ex) {
             log.warn("Cannot convert XmlDateTime", ex);
         }
@@ -225,43 +231,42 @@ public class KnxProjParser {
         List<de.root1.schema.knxproj._1.GroupAddress> gaList = etsDefined.getGroupAddresses().getGroupAddress();
         gaList.clear();
         for (GroupAddress ga : parsed.getGroupaddressList()) {
-            
+
             de.root1.schema.knxproj._1.GroupAddress insertGa = new de.root1.schema.knxproj._1.GroupAddress();
-            
+
             insertGa.setAddress(ga.getAddress());
             insertGa.setName(ga.getName());
             insertGa.setDPT(ga.getDPT());
             gaList.add(insertGa);
         }
-        
-        
+
         try {
             KnxProjXmlService.write(outfile, knxproj);
             log.debug("Exported to {}", outfile.getAbsolutePath());
         } catch (JAXBException | SAXException ex) {
-            throw new ExportException("Error writing file "+outfile.getAbsolutePath(), ex);
+            throw new ExportException("Error writing file " + outfile.getAbsolutePath(), ex);
         }
 
     }
-    
+
     private KnxProj createNewKnxProj() {
         ObjectFactory factory = new ObjectFactory();
         KnxProj knxproj = factory.createKnxProj();
-        
+
         EtsDefined etsdefined = factory.createEtsDefined();
         etsdefined.setGroupAddresses(factory.createGroupAddresses());
         etsdefined.setProject(factory.createProject());
-        
+
         UserDefined userdefined = factory.createUserDefined();
         userdefined.setGroupAddresses(factory.createGroupAddresses());
-        
+
         knxproj.setEtsDefined(etsdefined);
         knxproj.setUserDefined(userdefined);
         return knxproj;
     }
-    
+
     private static final Properties props;
-    
+
     static {
         InputStream resourceAsStream = KnxProjParser.class.getResourceAsStream("/application.properties");
         props = new Properties();
@@ -270,18 +275,18 @@ public class KnxProjParser {
         } catch (IOException ex) {
         }
     }
-    
+
     public static void main(String[] args) throws FileNotFoundException, ExportException, IOException, FileNotSupportedException, ParseException {
         System.out.println("");
         System.out.println(props.getProperty("name", "KnxProjParser"));
         System.out.println("-------------------------------------------------");
         System.out.println("");
-        System.out.println("Reading "+args[0]);
+        System.out.println("Reading " + args[0]);
         KnxProjParser parser = new KnxProjParser(new File(args[0]));
         System.out.println("Parsing ...");
         parser.parse();
         System.out.println("Exporting ...");
-        parser.exportXml(new File(args[0]+".parsed.xml"));
+        parser.exportXml(new File(args[0] + ".parsed.xml"));
         System.out.println("DONE!");
         System.out.println("");
     }

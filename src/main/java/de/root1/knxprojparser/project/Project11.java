@@ -106,7 +106,10 @@ public class Project11 extends AbstractKnxParser<KNX> {
 
         File projectFolder = projectFolders[0];
 
-        File projectFile = new File(projectFolder, "Project.xml");
+        File projectFile = new File(projectFolder, "project.xml");
+        if (!projectFile.exists()) {
+            projectFile = new File(projectFolder, "Project.xml");
+        }
 
         try {
             KNX projectXML = readXML(projectFile, KNX.class);
