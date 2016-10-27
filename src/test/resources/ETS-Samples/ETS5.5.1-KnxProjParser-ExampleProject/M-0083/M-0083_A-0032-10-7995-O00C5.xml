@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<KNX xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" CreatedBy="ETS5" ToolVersion="5.5.575.15318" xmlns="http://knx.org/xml/project/13">
+  <ManufacturerData>
+    <Manufacturer RefId="M-0083">
+      <ApplicationPrograms>
+        <ApplicationProgram Id="M-0083_A-0032-10-7995-O00C5" Name="KNX IP Interface" ApplicationNumber="50" ApplicationVersion="16" ProgramType="ApplicationProgram" MaskVersion="MV-0701" VisibleDescription="IP Schnittstelle" LoadProcedureStyle="ProductProcedure" PeiType="0" HelpFile="" DefaultLanguage="de-DE" DynamicTableManagement="1" Linkable="0" OriginalManufacturer="M-00C5" PreEts4Style="1" NonRegRelevantDataVersion="0" Hash="eU/154Dzq9aubN+Ba1HJlQ==" ConvertedFromPreEts4Data="1" Broken="0" IPConfig="Tool" AdditionalAddressesCount="0" DownloadInfoIncomplete="0" CreatedFromLegacySchemaVersion="0">
+          <Static>
+            <Code>
+              <AbsoluteSegment Id="M-0083_A-0032-10-7995-O00C5_AS-0700" Address="1792" Size="248" UserMemory="0">
+                <Data>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</Data>
+                <Mask>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</Mask>
+              </AbsoluteSegment>
+              <AbsoluteSegment Id="M-0083_A-0032-10-7995-O00C5_AS-4000" Address="16384" Size="23" UserMemory="0">
+                <Data>CwAA//////////////////////////8=</Data>
+                <Mask>/wAA//////////////////////////8=</Mask>
+              </AbsoluteSegment>
+              <AbsoluteSegment Id="M-0083_A-0032-10-7995-O00C5_AS-4017" Address="16407" Size="21" UserMemory="0">
+                <Data>CgEAAgEDAgQDBQQGBQcGCAf/////</Data>
+              </AbsoluteSegment>
+              <AbsoluteSegment Id="M-0083_A-0032-10-7995-O00C5_AS-402C" Address="16428" Size="92" UserMemory="0">
+                <Data>CAcJBwDfAAcB3wAHAt8ABwPfAAcE3wAHBd8ABwbfAAcH3wBAUQYBBAAB8EB8yYIAAf8HAMqCAAH/BwHLwgAB/wABzMIAAf8AAs3AAAH/AAPDUTkAV3pALAABAAA=</Data>
+              </AbsoluteSegment>
+              <AbsoluteSegment Id="M-0083_A-0032-10-7995-O00C5_AS-4300" Address="17152" Size="257" UserMemory="0">
+                <Data>AAD/AAMAAAAIAAsHAQAGAAgAAgACAwYD6AALAAAR8AAAAAAEAsCoASwAAAAAAAAAAAECAwQFCeAAFwwAAAAAEAADAAAAAAAAAAAAAAAAAAAAHklQLUdhdGV3YXkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/////wA3AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</Data>
+                <Mask>/////////////////////////////////////////wAAAAD///////////////////////////////////////////8AAAAAAAAAAAAAAAD//////////////////////////////////////////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</Mask>
+              </AbsoluteSegment>
+            </Code>
+            <ParameterTypes>
+              <ParameterType Id="M-0083_A-0032-10-7995-O00C5_PT-IpAssignment" Name="IpAssignment" Plugin="">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Id="M-0083_A-0032-10-7995-O00C5_PT-IpAssignment_EN-1" DisplayOrder="0" Text="manuell" Value="1" />
+                  <Enumeration Id="M-0083_A-0032-10-7995-O00C5_PT-IpAssignment_EN-4" DisplayOrder="2" Text="automatisch (DHCP)" Value="4" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="M-0083_A-0032-10-7995-O00C5_PT-Text" Name="Text" Plugin="">
+                <TypeNone />
+              </ParameterType>
+              <ParameterType Id="M-0083_A-0032-10-7995-O00C5_PT-Param.5Fpage" Name="Param_page" Plugin="">
+                <TypeNone />
+              </ParameterType>
+              <ParameterType Id="M-0083_A-0032-10-7995-O00C5_PT-IpAddrByte" Name="IpAddrByte" Plugin="">
+                <TypeNumber maxInclusive="255" minInclusive="0" SizeInBit="8" Type="unsignedInt" />
+              </ParameterType>
+              <ParameterType Id="M-0083_A-0032-10-7995-O00C5_PT-String30" Name="String30" Plugin="">
+                <TypeText SizeInBit="240" />
+              </ParameterType>
+            </ParameterTypes>
+            <Parameters>
+              <Parameter Id="M-0083_A-0032-10-7995-O00C5_P-11" Name="IpAddrByte4" Text="Byte 4" ParameterType="M-0083_A-0032-10-7995-O00C5_PT-IpAddrByte" Access="ReadWrite" Value="0">
+                <Memory CodeSegment="M-0083_A-0032-10-7995-O00C5_AS-4300" BitOffset="0" Offset="40" />
+              </Parameter>
+              <Parameter Id="M-0083_A-0032-10-7995-O00C5_P-12" Name="IpAddrByte3" Text="Byte 3" ParameterType="M-0083_A-0032-10-7995-O00C5_PT-IpAddrByte" Access="ReadWrite" Value="0">
+                <Memory CodeSegment="M-0083_A-0032-10-7995-O00C5_AS-4300" BitOffset="0" Offset="39" />
+              </Parameter>
+              <Parameter Id="M-0083_A-0032-10-7995-O00C5_P-13" Name="IpAddrByte2" Text="Byte 2" ParameterType="M-0083_A-0032-10-7995-O00C5_PT-IpAddrByte" Access="ReadWrite" Value="0">
+                <Memory CodeSegment="M-0083_A-0032-10-7995-O00C5_AS-4300" BitOffset="0" Offset="38" />
+              </Parameter>
+              <Parameter Id="M-0083_A-0032-10-7995-O00C5_P-14" Name="IpAddrByte1" Text="Byte 1" ParameterType="M-0083_A-0032-10-7995-O00C5_PT-IpAddrByte" Access="ReadWrite" Value="0">
+                <Memory CodeSegment="M-0083_A-0032-10-7995-O00C5_AS-4300" BitOffset="0" Offset="37" />
+              </Parameter>
+              <Parameter Id="M-0083_A-0032-10-7995-O00C5_P-17" Name="IpGatewayByte1" Text="Byte 1" ParameterType="M-0083_A-0032-10-7995-O00C5_PT-IpAddrByte" Access="ReadWrite" Value="0">
+                <Memory CodeSegment="M-0083_A-0032-10-7995-O00C5_AS-4300" BitOffset="0" Offset="45" />
+              </Parameter>
+              <Parameter Id="M-0083_A-0032-10-7995-O00C5_P-18" Name="IpGatewayByte2" Text="Byte 2" ParameterType="M-0083_A-0032-10-7995-O00C5_PT-IpAddrByte" Access="ReadWrite" Value="0">
+                <Memory CodeSegment="M-0083_A-0032-10-7995-O00C5_AS-4300" BitOffset="0" Offset="46" />
+              </Parameter>
+              <Parameter Id="M-0083_A-0032-10-7995-O00C5_P-19" Name="IpGatewayByte3" Text="Byte 3" ParameterType="M-0083_A-0032-10-7995-O00C5_PT-IpAddrByte" Access="ReadWrite" Value="0">
+                <Memory CodeSegment="M-0083_A-0032-10-7995-O00C5_AS-4300" BitOffset="0" Offset="47" />
+              </Parameter>
+              <Parameter Id="M-0083_A-0032-10-7995-O00C5_P-2" Name="IpAddrAssignment" Text="Ip Adresszuweisung" ParameterType="M-0083_A-0032-10-7995-O00C5_PT-IpAssignment" Access="ReadWrite" Value="4">
+                <Memory CodeSegment="M-0083_A-0032-10-7995-O00C5_AS-4300" BitOffset="0" Offset="35" />
+              </Parameter>
+              <Parameter Id="M-0083_A-0032-10-7995-O00C5_P-20" Name="IpGatewayByte4" Text="Byte 4" ParameterType="M-0083_A-0032-10-7995-O00C5_PT-IpAddrByte" Access="ReadWrite" Value="0">
+                <Memory CodeSegment="M-0083_A-0032-10-7995-O00C5_AS-4300" BitOffset="0" Offset="48" />
+              </Parameter>
+              <Parameter Id="M-0083_A-0032-10-7995-O00C5_P-3" Name="UserFriendlyName" Text="Gerätename" ParameterType="M-0083_A-0032-10-7995-O00C5_PT-String30" Access="ReadWrite" Value="KNX IP Interface">
+                <Memory CodeSegment="M-0083_A-0032-10-7995-O00C5_AS-4300" BitOffset="0" Offset="82" />
+              </Parameter>
+              <Parameter Id="M-0083_A-0032-10-7995-O00C5_P-5" Name="IpSubnetByte4" Text="Byte 4" ParameterType="M-0083_A-0032-10-7995-O00C5_PT-IpAddrByte" Access="ReadWrite" Value="0">
+                <Memory CodeSegment="M-0083_A-0032-10-7995-O00C5_AS-4300" BitOffset="0" Offset="44" />
+              </Parameter>
+              <Parameter Id="M-0083_A-0032-10-7995-O00C5_P-6" Name="IpSubnetByte3" Text="Byte 3" ParameterType="M-0083_A-0032-10-7995-O00C5_PT-IpAddrByte" Access="ReadWrite" Value="0">
+                <Memory CodeSegment="M-0083_A-0032-10-7995-O00C5_AS-4300" BitOffset="0" Offset="43" />
+              </Parameter>
+              <Parameter Id="M-0083_A-0032-10-7995-O00C5_P-7" Name="IpSubnetByte2" Text="Byte 2" ParameterType="M-0083_A-0032-10-7995-O00C5_PT-IpAddrByte" Access="ReadWrite" Value="0">
+                <Memory CodeSegment="M-0083_A-0032-10-7995-O00C5_AS-4300" BitOffset="0" Offset="42" />
+              </Parameter>
+              <Parameter Id="M-0083_A-0032-10-7995-O00C5_P-8" Name="IpSubnetByte1" Text="Byte 1" ParameterType="M-0083_A-0032-10-7995-O00C5_PT-IpAddrByte" Access="ReadWrite" Value="0">
+                <Memory CodeSegment="M-0083_A-0032-10-7995-O00C5_AS-4300" BitOffset="0" Offset="41" />
+              </Parameter>
+              <Parameter Id="M-0083_A-0032-10-7995-O00C5_P-1" Name="General" Text="Allgemein" ParameterType="M-0083_A-0032-10-7995-O00C5_PT-Param.5Fpage" Access="ReadWrite" Value="" />
+              <Parameter Id="M-0083_A-0032-10-7995-O00C5_P-4" Name="IpConfig2" Text="IP-Konfiguration 2" ParameterType="M-0083_A-0032-10-7995-O00C5_PT-Param.5Fpage" Access="ReadWrite" Value="" />
+              <Parameter Id="M-0083_A-0032-10-7995-O00C5_P-10" Name="IpConfig1" Text="IP-Konfiguration 1" ParameterType="M-0083_A-0032-10-7995-O00C5_PT-Param.5Fpage" Access="ReadWrite" Value="" />
+              <Parameter Id="M-0083_A-0032-10-7995-O00C5_P-9" Name="IpSubnetText" Text="IP-Subnetz" ParameterType="M-0083_A-0032-10-7995-O00C5_PT-Text" Access="ReadWrite" Value="" />
+              <Parameter Id="M-0083_A-0032-10-7995-O00C5_P-15" Name="IpAddrText" Text="IP-Adresse" ParameterType="M-0083_A-0032-10-7995-O00C5_PT-Text" Access="ReadWrite" Value="" />
+              <Parameter Id="M-0083_A-0032-10-7995-O00C5_P-16" Name="IpGatewayText" Text="IP-Gateway-Adresse" ParameterType="M-0083_A-0032-10-7995-O00C5_PT-Text" Access="ReadWrite" Value="" />
+            </Parameters>
+            <ParameterRefs>
+              <ParameterRef Id="M-0083_A-0032-10-7995-O00C5_P-1_R-1" DisplayOrder="1000" RefId="M-0083_A-0032-10-7995-O00C5_P-1" Tag="1" />
+              <ParameterRef Id="M-0083_A-0032-10-7995-O00C5_P-3_R-3" DisplayOrder="1100" RefId="M-0083_A-0032-10-7995-O00C5_P-3" Tag="3" />
+              <ParameterRef Id="M-0083_A-0032-10-7995-O00C5_P-2_R-2" DisplayOrder="1200" RefId="M-0083_A-0032-10-7995-O00C5_P-2" Tag="2" />
+              <ParameterRef Id="M-0083_A-0032-10-7995-O00C5_P-10_R-10" DisplayOrder="1210" RefId="M-0083_A-0032-10-7995-O00C5_P-10" Tag="10" />
+              <ParameterRef Id="M-0083_A-0032-10-7995-O00C5_P-15_R-15" DisplayOrder="1211" RefId="M-0083_A-0032-10-7995-O00C5_P-15" Tag="15" />
+              <ParameterRef Id="M-0083_A-0032-10-7995-O00C5_P-14_R-14" DisplayOrder="1212" RefId="M-0083_A-0032-10-7995-O00C5_P-14" Tag="14" />
+              <ParameterRef Id="M-0083_A-0032-10-7995-O00C5_P-13_R-13" DisplayOrder="1213" RefId="M-0083_A-0032-10-7995-O00C5_P-13" Tag="13" />
+              <ParameterRef Id="M-0083_A-0032-10-7995-O00C5_P-12_R-12" DisplayOrder="1214" RefId="M-0083_A-0032-10-7995-O00C5_P-12" Tag="12" />
+              <ParameterRef Id="M-0083_A-0032-10-7995-O00C5_P-11_R-11" DisplayOrder="1215" RefId="M-0083_A-0032-10-7995-O00C5_P-11" Tag="11" />
+              <ParameterRef Id="M-0083_A-0032-10-7995-O00C5_P-4_R-4" DisplayOrder="1220" RefId="M-0083_A-0032-10-7995-O00C5_P-4" Tag="4" />
+              <ParameterRef Id="M-0083_A-0032-10-7995-O00C5_P-9_R-9" DisplayOrder="1221" RefId="M-0083_A-0032-10-7995-O00C5_P-9" Tag="9" />
+              <ParameterRef Id="M-0083_A-0032-10-7995-O00C5_P-8_R-8" DisplayOrder="1222" RefId="M-0083_A-0032-10-7995-O00C5_P-8" Tag="8" />
+              <ParameterRef Id="M-0083_A-0032-10-7995-O00C5_P-7_R-7" DisplayOrder="1223" RefId="M-0083_A-0032-10-7995-O00C5_P-7" Tag="7" />
+              <ParameterRef Id="M-0083_A-0032-10-7995-O00C5_P-6_R-6" DisplayOrder="1224" RefId="M-0083_A-0032-10-7995-O00C5_P-6" Tag="6" />
+              <ParameterRef Id="M-0083_A-0032-10-7995-O00C5_P-5_R-5" DisplayOrder="1225" RefId="M-0083_A-0032-10-7995-O00C5_P-5" Tag="5" />
+              <ParameterRef Id="M-0083_A-0032-10-7995-O00C5_P-16_R-16" DisplayOrder="1226" RefId="M-0083_A-0032-10-7995-O00C5_P-16" Tag="16" />
+              <ParameterRef Id="M-0083_A-0032-10-7995-O00C5_P-17_R-17" DisplayOrder="1227" RefId="M-0083_A-0032-10-7995-O00C5_P-17" Tag="17" />
+              <ParameterRef Id="M-0083_A-0032-10-7995-O00C5_P-18_R-18" DisplayOrder="1228" RefId="M-0083_A-0032-10-7995-O00C5_P-18" Tag="18" />
+              <ParameterRef Id="M-0083_A-0032-10-7995-O00C5_P-19_R-19" DisplayOrder="1229" RefId="M-0083_A-0032-10-7995-O00C5_P-19" Tag="19" />
+              <ParameterRef Id="M-0083_A-0032-10-7995-O00C5_P-20_R-20" DisplayOrder="1230" RefId="M-0083_A-0032-10-7995-O00C5_P-20" Tag="20" />
+            </ParameterRefs>
+            <ComObjectTable CodeSegment="M-0083_A-0032-10-7995-O00C5_AS-402C" Offset="0" />
+            <AddressTable CodeSegment="M-0083_A-0032-10-7995-O00C5_AS-4000" Offset="0" MaxEntries="10" />
+            <AssociationTable CodeSegment="M-0083_A-0032-10-7995-O00C5_AS-4017" Offset="0" MaxEntries="10" />
+            <LoadProcedures>
+              <LoadProcedure>
+                <LdCtrlConnect />
+                <LdCtrlUnload LsmIdx="1" />
+                <LdCtrlUnload LsmIdx="2" />
+                <LdCtrlUnload LsmIdx="3" />
+                <LdCtrlLoad LsmIdx="1" />
+                <LdCtrlAbsSegment LsmIdx="1" SegType="0" Address="16384" Size="23" Access="242" MemType="3" SegFlags="128" />
+                <LdCtrlTaskSegment LsmIdx="1" Address="16384" />
+                <LdCtrlLoadCompleted LsmIdx="1" />
+                <LdCtrlLoad LsmIdx="2" />
+                <LdCtrlAbsSegment LsmIdx="2" SegType="0" Address="16407" Size="21" Access="242" MemType="3" SegFlags="128" />
+                <LdCtrlTaskSegment LsmIdx="2" Address="16407" />
+                <LdCtrlLoadCompleted LsmIdx="2" />
+                <LdCtrlLoad LsmIdx="3" />
+                <LdCtrlAbsSegment LsmIdx="3" SegType="0" Address="1792" Size="248" Access="241" MemType="2" SegFlags="0" />
+                <LdCtrlAbsSegment LsmIdx="3" SegType="0" Address="16428" Size="92" Access="241" MemType="3" SegFlags="128" />
+                <LdCtrlAbsSegment LsmIdx="3" SegType="0" Address="17152" Size="257" Access="34" MemType="3" SegFlags="128" />
+                <LdCtrlTaskSegment LsmIdx="3" Address="16510" />
+                <LdCtrlTaskCtrl1 LsmIdx="3" Address="16463" Count="1" />
+                <LdCtrlLoadCompleted LsmIdx="3" />
+                <LdCtrlRestart />
+                <LdCtrlTaskSegment LsmIdx="5" Address="16428" />
+                <LdCtrlLoad LsmIdx="5" />
+                <LdCtrlDisconnect />
+              </LoadProcedure>
+            </LoadProcedures>
+            <Extension RequiresExternalSoftware="0" />
+            <Options PreferPartialDownloadIfApplicationLoaded="0" EasyCtrlModeModeStyleEmptyGroupComTables="0" SetObjectTableLengthAlwaysToOne="0" TextParameterZeroTerminate="0" ParameterByteOrder="BigEndian" LegacyNoPartialDownload="0" LegacyNoMemoryVerifyMode="0" LegacyNoOptimisticWrite="0" LegacyDoNotReportPropertyWriteErrors="0" LegacyNoBackgroundDownload="0" LegacyDoNotCheckManufacturerId="0" LegacyAlwaysReloadAppIfCoVisibilityChanged="0" LegacyNeverReloadAppIfCoVisibilityChanged="0" LegacyDoNotSupportUndoDelete="0" LegacyAllowPartialDownloadIfAp2Mismatch="1" LegacyKeepObjectTableGaps="0" PartialDownloadOnlyVisibleParameters="0" LegacyProxyCommunicationObjects="0" DeviceInfoIgnoreRunState="0" DeviceInfoIgnoreLoadedState="0" DeviceCompareAllowCompatibleManufacturerId="0" LineCoupler0912NewProgrammingStyle="0" TextParameterEncodingSelector="UseTextParameterEncodingCodePage" DownloadInvisibleParameters="Background" />
+          </Static>
+          <Dynamic>
+            <Channel Name="Generic" Text="" Number="0" Id="M-0083_A-0032-10-7995-O00C5_CH-0">
+              <ParameterBlock Id="M-0083_A-0032-10-7995-O00C5_PB-1" Name="General" ParamRefId="M-0083_A-0032-10-7995-O00C5_P-1_R-1">
+                <choose ParamRefId="M-0083_A-0032-10-7995-O00C5_P-1_R-1">
+                  <when default="true">
+                    <ParameterRefRef RefId="M-0083_A-0032-10-7995-O00C5_P-3_R-3" />
+                    <ParameterRefRef RefId="M-0083_A-0032-10-7995-O00C5_P-2_R-2" />
+                  </when>
+                </choose>
+              </ParameterBlock>
+              <choose ParamRefId="M-0083_A-0032-10-7995-O00C5_P-1_R-1">
+                <when default="true">
+                  <choose ParamRefId="M-0083_A-0032-10-7995-O00C5_P-2_R-2">
+                    <when test="1">
+                      <ParameterBlock Id="M-0083_A-0032-10-7995-O00C5_PB-10" Name="IpConfig1" ParamRefId="M-0083_A-0032-10-7995-O00C5_P-10_R-10">
+                        <choose ParamRefId="M-0083_A-0032-10-7995-O00C5_P-10_R-10">
+                          <when default="true">
+                            <ParameterRefRef RefId="M-0083_A-0032-10-7995-O00C5_P-15_R-15" />
+                            <ParameterRefRef RefId="M-0083_A-0032-10-7995-O00C5_P-14_R-14" />
+                            <ParameterRefRef RefId="M-0083_A-0032-10-7995-O00C5_P-13_R-13" />
+                            <ParameterRefRef RefId="M-0083_A-0032-10-7995-O00C5_P-12_R-12" />
+                            <ParameterRefRef RefId="M-0083_A-0032-10-7995-O00C5_P-11_R-11" />
+                          </when>
+                        </choose>
+                      </ParameterBlock>
+                      <ParameterBlock Id="M-0083_A-0032-10-7995-O00C5_PB-4" Name="IpConfig2" ParamRefId="M-0083_A-0032-10-7995-O00C5_P-4_R-4">
+                        <choose ParamRefId="M-0083_A-0032-10-7995-O00C5_P-4_R-4">
+                          <when default="true">
+                            <ParameterRefRef RefId="M-0083_A-0032-10-7995-O00C5_P-9_R-9" />
+                            <ParameterRefRef RefId="M-0083_A-0032-10-7995-O00C5_P-8_R-8" />
+                            <ParameterRefRef RefId="M-0083_A-0032-10-7995-O00C5_P-7_R-7" />
+                            <ParameterRefRef RefId="M-0083_A-0032-10-7995-O00C5_P-6_R-6" />
+                            <ParameterRefRef RefId="M-0083_A-0032-10-7995-O00C5_P-5_R-5" />
+                            <ParameterRefRef RefId="M-0083_A-0032-10-7995-O00C5_P-16_R-16" />
+                            <ParameterRefRef RefId="M-0083_A-0032-10-7995-O00C5_P-17_R-17" />
+                            <ParameterRefRef RefId="M-0083_A-0032-10-7995-O00C5_P-18_R-18" />
+                            <ParameterRefRef RefId="M-0083_A-0032-10-7995-O00C5_P-19_R-19" />
+                            <ParameterRefRef RefId="M-0083_A-0032-10-7995-O00C5_P-20_R-20" />
+                          </when>
+                        </choose>
+                      </ParameterBlock>
+                    </when>
+                  </choose>
+                </when>
+              </choose>
+            </Channel>
+          </Dynamic>
+        </ApplicationProgram>
+      </ApplicationPrograms>
+      <Languages>
+        <Language Identifier="de-DE">
+          <TranslationUnit RefId="M-0083_A-0032-10-7995-O00C5">
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5">
+              <Translation AttributeName="Name" Text="KNX IP Interface" />
+              <Translation AttributeName="VisibleDescription" Text="IP Schnittstelle" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_PT-IpAssignment_EN-1">
+              <Translation AttributeName="Text" Text="manuell" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_PT-IpAssignment_EN-4">
+              <Translation AttributeName="Text" Text="automatisch (DHCP)" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-1">
+              <Translation AttributeName="Text" Text="Allgemein" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-10">
+              <Translation AttributeName="Text" Text="IP-Konfiguration 1" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-11">
+              <Translation AttributeName="Text" Text="Byte 4" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-12">
+              <Translation AttributeName="Text" Text="Byte 3" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-13">
+              <Translation AttributeName="Text" Text="Byte 2" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-14">
+              <Translation AttributeName="Text" Text="Byte 1" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-15">
+              <Translation AttributeName="Text" Text="IP-Adresse" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-16">
+              <Translation AttributeName="Text" Text="IP-Gateway-Adresse" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-17">
+              <Translation AttributeName="Text" Text="Byte 1" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-18">
+              <Translation AttributeName="Text" Text="Byte 2" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-19">
+              <Translation AttributeName="Text" Text="Byte 3" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-2">
+              <Translation AttributeName="Text" Text="Ip Adresszuweisung" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-20">
+              <Translation AttributeName="Text" Text="Byte 4" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-3">
+              <Translation AttributeName="Text" Text="Gerätename" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-4">
+              <Translation AttributeName="Text" Text="IP-Konfiguration 2" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-5">
+              <Translation AttributeName="Text" Text="Byte 4" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-6">
+              <Translation AttributeName="Text" Text="Byte 3" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-7">
+              <Translation AttributeName="Text" Text="Byte 2" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-8">
+              <Translation AttributeName="Text" Text="Byte 1" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-9">
+              <Translation AttributeName="Text" Text="IP-Subnetz" />
+            </TranslationElement>
+          </TranslationUnit>
+        </Language>
+        <Language Identifier="en-US">
+          <TranslationUnit RefId="M-0083_A-0032-10-7995-O00C5">
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5">
+              <Translation AttributeName="Name" Text="KNX IP Interface 730" />
+              <Translation AttributeName="VisibleDescription" Text="IP Interface" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_PT-IpAssignment_EN-1">
+              <Translation AttributeName="Text" Text="manual" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_PT-IpAssignment_EN-4">
+              <Translation AttributeName="Text" Text="automatic (DHCP)" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-1">
+              <Translation AttributeName="Text" Text="General" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-10">
+              <Translation AttributeName="Text" Text="IP-Configuration 1" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-11">
+              <Translation AttributeName="Text" Text="Byte 4" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-12">
+              <Translation AttributeName="Text" Text="Byte 3" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-13">
+              <Translation AttributeName="Text" Text="Byte 2" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-14">
+              <Translation AttributeName="Text" Text="Byte 1" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-15">
+              <Translation AttributeName="Text" Text="IP-Address" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-16">
+              <Translation AttributeName="Text" Text="IP-Gateway Address" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-17">
+              <Translation AttributeName="Text" Text="Byte 1" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-18">
+              <Translation AttributeName="Text" Text="Byte 2" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-19">
+              <Translation AttributeName="Text" Text="Byte 3" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-2">
+              <Translation AttributeName="Text" Text="Ip Address assignment" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-20">
+              <Translation AttributeName="Text" Text="Byte 4" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-3">
+              <Translation AttributeName="Text" Text="Device name" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-4">
+              <Translation AttributeName="Text" Text="IP-Configuration 2" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-5">
+              <Translation AttributeName="Text" Text="Byte 4" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-6">
+              <Translation AttributeName="Text" Text="Byte 3" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-7">
+              <Translation AttributeName="Text" Text="Byte 2" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-8">
+              <Translation AttributeName="Text" Text="Byte 1" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_A-0032-10-7995-O00C5_P-9">
+              <Translation AttributeName="Text" Text="IP-Subnet" />
+            </TranslationElement>
+          </TranslationUnit>
+        </Language>
+      </Languages>
+    </Manufacturer>
+  </ManufacturerData>
+</KNX>

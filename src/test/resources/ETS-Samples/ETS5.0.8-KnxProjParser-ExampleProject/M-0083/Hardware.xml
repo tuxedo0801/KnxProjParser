@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<KNX xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" CreatedBy="ETS5" ToolVersion="5.0.1411.13193" xmlns="http://knx.org/xml/project/12">
+  <ManufacturerData>
+    <Manufacturer RefId="M-0083">
+      <Hardware>
+        <Hardware Id="M-0083_H-11-1" Name="Schaltaktor 8-fach, 4TE, 230VAC, 10A, Kompakt" SerialNumber="11" VersionNumber="1" BusCurrent="5.0000000e+000" IsAccessory="0" HasIndividualAddress="1" HasApplicationProgram="1" HasApplicationProgram2="0" IsPowerSupply="0" IsChoke="0" IsCoupler="0" IsPowerLineRepeater="0" IsPowerLineSignalFilter="0" IsCable="0" NonRegRelevantDataVersion="0" IsIPEnabled="0">
+          <Products>
+            <Product Id="M-0083_H-11-1_P-AKK.2D0816.2E01" Text="AKK-0816.01 Schaltaktor 8-fach, 4TE, 16A" OrderNumber="AKK-0816.01" IsRailMounted="1" WidthInMillimeter="7.1300003e+001" DefaultLanguage="de-DE" Hash="HIMg8ZKEKOQISgaVAz0bDIO5pQU=" NonRegRelevantDataVersion="0">
+              <RegistrationInfo RegistrationStatus="Registered" RegistrationSignature="b4b2EIVUHh79e5WddHv6Yx9smAic6mB/8XJoc7EqCU0mOkmfKyKomY4TR63dCtSzVuaFW9AY5UKjVBEU9ZwYXadMM4P9oBteQdRbOO/Ji9b5AnSNgEXlnfutxUk3Q4reL6XFXkeCgK+KTUcSU0HnOb9B+b0SVaFac+g2G1upixc=" RegistrationDate="2011-05-20" />
+            </Product>
+          </Products>
+          <Hardware2Programs>
+            <Hardware2Program Id="M-0083_H-11-1_HP-000B-11-A7FC" MediumTypes="MT-0" Hash="sJFEB13NhRPLZpJJPmvfnRFNTW4=">
+              <ApplicationProgramRef RefId="M-0083_A-000B-11-A7FC" />
+              <RegistrationInfo RegistrationSignature="O9klJirWft8ZONFEwRQkJE1OeyDHNAjrEVf/77DjprK1KqxOkPZ/r383vsMeLX4uJR5bfWMN2ys+jmX97ct6LCT/gCImqeAj95uUyAX/g4I2+U4ZR2O59ablFDsABlQqwNm4bHlqlsxfb3J64ukfAqOoyypvDv9ZZhHmuJj8AzM=" RegistrationDate="2011-08-04" RegistrationNumber="2011/9630" RegistrationStatus="Certified" />
+            </Hardware2Program>
+          </Hardware2Programs>
+        </Hardware>
+        <Hardware Id="M-0083_H-30-1" Name="Binäreingang 16-fach" SerialNumber="30" VersionNumber="1" BusCurrent="1.0000000e+001" IsAccessory="0" HasIndividualAddress="1" HasApplicationProgram="1" HasApplicationProgram2="0" IsPowerSupply="0" IsChoke="0" IsCoupler="0" IsPowerLineRepeater="0" IsPowerLineSignalFilter="0" IsCable="0" NonRegRelevantDataVersion="0" IsIPEnabled="0">
+          <Products>
+            <Product Id="M-0083_H-30-1_P-BE.2D16000.2E01" Text="Binary input 16-fold, 8TE, Inputs potential-free" OrderNumber="BE-16000.01" IsRailMounted="1" WidthInMillimeter="1.4230000e+002" DefaultLanguage="en-US" Hash="G9G7/KCPJrF3Z6WvWvgqI3KwASo=" NonRegRelevantDataVersion="0">
+              <RegistrationInfo RegistrationStatus="Certified" RegistrationSignature="KwCego8vUPsls2cHHkFR3WT1oVrTUO6enErfvb7SGxgFuEL2yKtYy7Zj/Y861Zwg8jbAg+T3zOq37jzuo/NgTVi3TFXsfAQ1hGza8YlZhoWTLo9guCytJ0XK83Agk5HqdzGdxJ2Xu0Y9hJGHjQsTvclbn3UPpNTobbV5NVVzRIw=" RegistrationDate="2012-04-06" />
+            </Product>
+          </Products>
+          <Hardware2Programs>
+            <Hardware2Program Id="M-0083_H-30-1_HP-0030-20-FCCB" MediumTypes="MT-0" Hash="xa3qvqwk+8e00rA8j/gjfuJXes4=">
+              <ApplicationProgramRef RefId="M-0083_A-0030-20-FCCB" />
+              <RegistrationInfo RegistrationSignature="DDAEIeCRuCuMreMdjVl4ID9c4pG65EPvJiFXEOsC/LNXZX0DgzXjNgLAmpc4spY9R40IwkDdCUGRAM9mF0jk5dfqiiAMb4bA9vwEkkDrDicOAsOwl5PsUVoqxXi7hmOcHJ1XvSkbQU6HHl36pH3jsyz38i+n9tvWa9bbnG59O+w=" RegistrationNumber="2012/10301" RegistrationStatus="Certified" />
+            </Hardware2Program>
+          </Hardware2Programs>
+        </Hardware>
+        <Hardware Id="M-0083_H-38-1" Name="Taster 4-fach Plus" SerialNumber="38" VersionNumber="1" IsAccessory="0" HasIndividualAddress="1" HasApplicationProgram="1" HasApplicationProgram2="0" IsPowerSupply="0" IsChoke="0" IsCoupler="0" IsPowerLineRepeater="0" IsPowerLineSignalFilter="0" IsCable="0" NonRegRelevantDataVersion="0" IsIPEnabled="0">
+          <Products>
+            <Product Id="M-0083_H-38-1_P-BE.2DTA55x4.2E01" Text="BE-TA55P4.01 Taster 4-fach / Plus" OrderNumber="BE-TA55x4.01" IsRailMounted="0" DefaultLanguage="de-DE" Hash="Q+EI0IZugjUVrO03eR07mt/3WU0=" NonRegRelevantDataVersion="0">
+              <RegistrationInfo RegistrationStatus="Registered" RegistrationSignature="w8thvVdQ6Tz3QbqQLor3OOs7FOhyRNp8sUokMUr+GNh55YFSYVTh55drGNxSqMWNdpYRtXH6QyG9ZtTgoq9a3YcTo9sJyplAZVfGD0a0oc9JiX3l81tnoa4/ZP2uYy3AJns+/uzNvuqVawTXEHed2rpnX60lImxups5sNtZQhSg=" RegistrationDate="2011-06-27" />
+            </Product>
+          </Products>
+          <Hardware2Programs>
+            <Hardware2Program Id="M-0083_H-38-1_HP-0026-14-05BA" MediumTypes="MT-0" Hash="2R8FLh4cNvIFzK999zRcCBb+v+A=">
+              <ApplicationProgramRef RefId="M-0083_A-0026-14-05BA" />
+              <RegistrationInfo RegistrationSignature="v+3pNSd9WmaumYl2BudbJyDBKAH3yqUhm8FuE/8jGVudZX8dlgf0AiJJ8dIaakqKe0p5K1YRDqFSGtmOly3c2G7GHaS2FLghHTfKsCHSAf1bZB7gBdC4pVdjyCVb8wvcQLHIdVPpMzZWdAmdIg7i0KRueKpxLLgv3mCYX9WClYM=" RegistrationDate="2012-06-12" RegistrationNumber="2012/10078" RegistrationStatus="Registered" />
+            </Hardware2Program>
+          </Hardware2Programs>
+        </Hardware>
+        <Hardware Id="M-0083_H-SCN.2DIP000.2E01-1-O00C5" Name="KNX IP Interface" SerialNumber="SCN-IP000.01" VersionNumber="1" BusCurrent="1.2000000e+001" IsAccessory="0" HasIndividualAddress="1" HasApplicationProgram="1" HasApplicationProgram2="0" IsPowerSupply="0" IsChoke="0" IsCoupler="0" IsPowerLineRepeater="0" IsPowerLineSignalFilter="0" IsCable="0" OriginalManufacturer="M-00C5" NonRegRelevantDataVersion="0" IsIPEnabled="0">
+          <Products>
+            <Product Id="M-0083_H-SCN.2DIP000.2E01-1-O00C5_P-SCN.2DIP000.2E01" Text="KNX IP Interface" OrderNumber="SCN-IP000.01" IsRailMounted="1" WidthInMillimeter="3.6000000e+001" DefaultLanguage="de-DE" Hash="g/mFnBKDN34uh+qayI0P4IxLZ/8=" NonRegRelevantDataVersion="0">
+              <Attributes>
+                <Attribute Id="M-0083_H-SCN.2DIP000.2E01-1-O00C5_P-SCN.2DIP000.2E01_AT-CatalogName" Name="CatalogName" Value="KNX IP Interface" />
+                <Attribute Id="M-0083_H-SCN.2DIP000.2E01-1-O00C5_P-SCN.2DIP000.2E01_AT-Colour" Name="Colour" Value="grau" />
+              </Attributes>
+              <RegistrationInfo RegistrationStatus="Certified" RegistrationSignature="WRt+OT/A5zu7jaREudlrIcaEL6B1VX8UtMKQSuKSr6rbgxjRuDyysugD3u5k5+Ky2tGtDwpBCNsFpUWPXu+7KqhG/TDRikUVMbmvmdvgBLaNs3Ly+ahKU9xjBjcq5tyLJXdDHaM/2V1GOqLaW2dYe+io5PIQlklrAA9fliQK81w=" />
+            </Product>
+          </Products>
+          <Hardware2Programs>
+            <Hardware2Program Id="M-0083_H-SCN.2DIP000.2E01-1-O00C5_HP-0032-10-ADE6-O00C5" MediumTypes="MT-0" Hash="Vw+yw1/GpzgBsag2LGkSe5qvHHA=">
+              <ApplicationProgramRef RefId="M-0083_A-0032-10-ADE6-O00C5" />
+              <RegistrationInfo RegistrationSignature="W+RLCHM1TSRkjVFriBvE3wyHT/3HNWQDaE+8UVSxdtOZ+nmEfiLO85No26FcLU2FTyp5bfk9RYBLF8Vr8dNLdGDXMLoKT2mxVBaiq6GVOY5Oeq0DK8hBxc3y6KaBJYb0lWBqdlQ8dj3je+NRziX7043nmk9bCnM8oFSQY0p+31A=" OriginalRegistrationNumber="2006/7523" RegistrationNumber="2009/8596" RegistrationStatus="Certified" />
+            </Hardware2Program>
+          </Hardware2Programs>
+        </Hardware>
+      </Hardware>
+      <Languages>
+        <Language Identifier="de-DE">
+          <TranslationUnit RefId="M-0083_H-11-1_P-AKK.2D0816.2E01">
+            <TranslationElement RefId="M-0083_H-11-1_P-AKK.2D0816.2E01">
+              <Translation AttributeName="Text" Text="AKK-0816.01 Schaltaktor 8-fach, 4TE, 16A" />
+            </TranslationElement>
+          </TranslationUnit>
+          <TranslationUnit RefId="M-0083_H-30-1_P-BE.2D16000.2E01">
+            <TranslationElement RefId="M-0083_H-30-1_P-BE.2D16000.2E01">
+              <Translation AttributeName="Text" Text="Binäreingang 16-fach, 8TE, Eingänge potentialfrei" />
+            </TranslationElement>
+          </TranslationUnit>
+          <TranslationUnit RefId="M-0083_H-38-1_P-BE.2DTA55x4.2E01">
+            <TranslationElement RefId="M-0083_H-38-1_P-BE.2DTA55x4.2E01">
+              <Translation AttributeName="Text" Text="BE-TA55P4.01 Taster 4-fach / Plus" />
+            </TranslationElement>
+          </TranslationUnit>
+          <TranslationUnit RefId="M-0083_H-SCN.2DIP000.2E01-1-O00C5_P-SCN.2DIP000.2E01">
+            <TranslationElement RefId="M-0083_H-SCN.2DIP000.2E01-1-O00C5_P-SCN.2DIP000.2E01">
+              <Translation AttributeName="Text" Text="KNX IP Interface" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_H-SCN.2DIP000.2E01-1-O00C5_P-SCN.2DIP000.2E01_AT-CatalogName">
+              <Translation AttributeName="Value" Text="KNX IP Interface" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0083_H-SCN.2DIP000.2E01-1-O00C5_P-SCN.2DIP000.2E01_AT-Colour">
+              <Translation AttributeName="Value" Text="grau" />
+            </TranslationElement>
+          </TranslationUnit>
+        </Language>
+        <Language Identifier="en-US">
+          <TranslationUnit RefId="M-0083_H-11-1_P-AKK.2D0816.2E01">
+            <TranslationElement RefId="M-0083_H-11-1_P-AKK.2D0816.2E01">
+              <Translation AttributeName="Text" Text="AKK-0816.01 Switch Actuator 8-fold, 4TE, 16A" />
+            </TranslationElement>
+          </TranslationUnit>
+          <TranslationUnit RefId="M-0083_H-38-1_P-BE.2DTA55x4.2E01">
+            <TranslationElement RefId="M-0083_H-38-1_P-BE.2DTA55x4.2E01">
+              <Translation AttributeName="Text" Text="BE-TA55P4.01 Push button 4-fold / Plus" />
+            </TranslationElement>
+          </TranslationUnit>
+        </Language>
+        <Language Identifier="es-ES">
+          <TranslationUnit RefId="M-0083_H-11-1_P-AKK.2D0816.2E01">
+            <TranslationElement RefId="M-0083_H-11-1_P-AKK.2D0816.2E01">
+              <Translation AttributeName="Text" Text="AKK-0816.01 Act. de conmutación 8C, 4TE, 16A" />
+            </TranslationElement>
+          </TranslationUnit>
+        </Language>
+      </Languages>
+    </Manufacturer>
+  </ManufacturerData>
+</KNX>

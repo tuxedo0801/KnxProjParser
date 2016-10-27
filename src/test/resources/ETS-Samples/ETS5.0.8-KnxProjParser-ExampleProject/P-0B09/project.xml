@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<KNX xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" CreatedBy="ETS5" ToolVersion="5.0.1411.13193" xmlns="http://knx.org/xml/project/12">
+  <Project Id="P-0B09">
+    <ProjectInformation Name="KnxProjParser-ExampleProject" LastModified="2016-10-25T08:57:08" ProjectStart="2016-10-25T08:41:43" ProjectId="0" ProjectTracingLevel="None" Hide16BitGroupsFromLegacyPlugins="1" GroupAddressStyle="ThreeLevel" CompletionStatus="Undefined" LastUsedPuid="85" Guid="e46bff32-6e2a-433a-a903-7dc21f2f875c" />
+  </Project>
+</KNX>

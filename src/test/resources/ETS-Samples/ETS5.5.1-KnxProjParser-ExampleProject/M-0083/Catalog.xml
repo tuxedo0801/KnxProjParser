@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<KNX xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" CreatedBy="ETS5" ToolVersion="5.5.575.15318" xmlns="http://knx.org/xml/project/13">
+  <ManufacturerData>
+    <Manufacturer RefId="M-0083">
+      <Catalog>
+        <CatalogSection Id="M-0083_CS-3" Name="TP Interfaces/Gateways" Number="3" VisibleDescription="" DefaultLanguage="en" NonRegRelevantDataVersion="0">
+          <CatalogSection Id="M-0083_CS-3-3" Name="IP" Number="3" VisibleDescription="" DefaultLanguage="de-DE" NonRegRelevantDataVersion="0">
+            <CatalogItem Id="M-0083_H-SCN.2DIP000.2E01-1-O00C5_HP-0032-10-7995-O00C5_CI-SCN.2DIP000.2E01-1" Name="KNX IP Interface" Number="1" ProductRefId="M-0083_H-SCN.2DIP000.2E01-1-O00C5_P-SCN.2DIP000.2E01" Hardware2ProgramRefId="M-0083_H-SCN.2DIP000.2E01-1-O00C5_HP-0032-10-7995-O00C5" DefaultLanguage="de-DE" NonRegRelevantDataVersion="0" />
+          </CatalogSection>
+        </CatalogSection>
+        <CatalogSection Id="M-0083_CS-A.2001" Name="Aktoren" Number="A 01" VisibleDescription="" DefaultLanguage="de-DE" NonRegRelevantDataVersion="0">
+          <CatalogSection Id="M-0083_CS-A.2001-S.2002" Name="Schaltaktoren, Kompakte Ausührung" Number="S 02" VisibleDescription="" DefaultLanguage="de-DE" NonRegRelevantDataVersion="0">
+            <CatalogItem Id="M-0083_H-11-1_HP-000B-11-6BE3_CI-AKK.2D0816.2E01-1" Name="AKK-0816.01 Schaltaktor 8-fach, 4TE, 16A" Number="1" VisibleDescription="Kompakte Ausführung 230VAC, 16A ohmsche Last" ProductRefId="M-0083_H-11-1_P-AKK.2D0816.2E01" Hardware2ProgramRefId="M-0083_H-11-1_HP-000B-11-6BE3" DefaultLanguage="de-DE" NonRegRelevantDataVersion="0" />
+          </CatalogSection>
+        </CatalogSection>
+        <CatalogSection Id="M-0083_CS-B.2001" Name="Binäreingang" Number="B 01" VisibleDescription="Binäreingang" DefaultLanguage="de-DE" NonRegRelevantDataVersion="0">
+          <CatalogSection Id="M-0083_CS-B.2001-B.20UE.2001" Name="Universal Eingang" Number="B UE 01" VisibleDescription="" DefaultLanguage="de-DE" NonRegRelevantDataVersion="0">
+            <CatalogItem Id="M-0083_H-30-1_HP-0030-20-65FC_CI-BE.2D16000.2E01-1" Name="Binary input 16-fold, 8TE, Inputs potential-free" Number="1" VisibleDescription="For floating contacts" ProductRefId="M-0083_H-30-1_P-BE.2D16000.2E01" Hardware2ProgramRefId="M-0083_H-30-1_HP-0030-20-65FC" DefaultLanguage="en-US" NonRegRelevantDataVersion="0" />
+          </CatalogSection>
+        </CatalogSection>
+        <CatalogSection Id="M-0083_CS-B.20TA.2001" Name="MDT Taster" Number="B TA 01" VisibleDescription="" DefaultLanguage="de-DE" NonRegRelevantDataVersion="0">
+          <CatalogSection Id="M-0083_CS-B.20TA.2001-B.20TA.2004" Name="MDT Taster 4-fach" Number="B TA 04" VisibleDescription="" DefaultLanguage="de-DE" NonRegRelevantDataVersion="0">
+            <CatalogItem Id="M-0083_H-38-1_HP-0026-14-A48C_CI-BE.2DTA55x4.2E01-1" Name="BE-TA55P4.01 Taster 4-fach / Plus" Number="1" VisibleDescription="Taster 4-fach mit LED, Logik" ProductRefId="M-0083_H-38-1_P-BE.2DTA55x4.2E01" Hardware2ProgramRefId="M-0083_H-38-1_HP-0026-14-A48C" DefaultLanguage="de-DE" NonRegRelevantDataVersion="0" />
+          </CatalogSection>
+        </CatalogSection>
+      </Catalog>
+      <Languages>
+        <Language Identifier="de-DE">
+          <TranslationUnit RefId="M-0083_CS-3">
+            <TranslationElement RefId="M-0083_CS-3">
+              <Translation AttributeName="Name" Text="TP Schnittstellen/Gateways" />
+            </TranslationElement>
+          </TranslationUnit>
+          <TranslationUnit RefId="M-0083_CS-3-3">
+            <TranslationElement RefId="M-0083_CS-3-3">
+              <Translation AttributeName="Name" Text="IP" />
+            </TranslationElement>
+          </TranslationUnit>
+          <TranslationUnit RefId="M-0083_CS-A.2001">
+            <TranslationElement RefId="M-0083_CS-A.2001">
+              <Translation AttributeName="Name" Text="Aktoren" />
+            </TranslationElement>
+          </TranslationUnit>
+          <TranslationUnit RefId="M-0083_CS-A.2001-S.2002">
+            <TranslationElement RefId="M-0083_CS-A.2001-S.2002">
+              <Translation AttributeName="Name" Text="Schaltaktoren, Kompakte Ausührung" />
+            </TranslationElement>
+          </TranslationUnit>
+          <TranslationUnit RefId="M-0083_CS-B.2001">
+            <TranslationElement RefId="M-0083_CS-B.2001">
+              <Translation AttributeName="Name" Text="Binäreingang" />
+              <Translation AttributeName="VisibleDescription" Text="Binäreingang" />
+            </TranslationElement>
+          </TranslationUnit>
+          <TranslationUnit RefId="M-0083_CS-B.2001-B.20UE.2001">
+            <TranslationElement RefId="M-0083_CS-B.2001-B.20UE.2001">
+              <Translation AttributeName="Name" Text="Universal Eingang" />
+            </TranslationElement>
+          </TranslationUnit>
+          <TranslationUnit RefId="M-0083_CS-B.20TA.2001">
+            <TranslationElement RefId="M-0083_CS-B.20TA.2001">
+              <Translation AttributeName="Name" Text="MDT Taster" />
+            </TranslationElement>
+          </TranslationUnit>
+          <TranslationUnit RefId="M-0083_CS-B.20TA.2001-B.20TA.2004">
+            <TranslationElement RefId="M-0083_CS-B.20TA.2001-B.20TA.2004">
+              <Translation AttributeName="Name" Text="MDT Taster 4-fach" />
+            </TranslationElement>
+          </TranslationUnit>
+          <TranslationUnit RefId="M-0083_H-11-1_HP-000B-11-6BE3_CI-AKK.2D0816.2E01-1">
+            <TranslationElement RefId="M-0083_H-11-1_HP-000B-11-6BE3_CI-AKK.2D0816.2E01-1">
+              <Translation AttributeName="Name" Text="AKK-0816.01 Schaltaktor 8-fach, 4TE, 16A" />
+              <Translation AttributeName="VisibleDescription" Text="Kompakte Ausführung 230VAC, 16A ohmsche Last" />
+            </TranslationElement>
+          </TranslationUnit>
+          <TranslationUnit RefId="M-0083_H-30-1_HP-0030-20-65FC_CI-BE.2D16000.2E01-1">
+            <TranslationElement RefId="M-0083_H-30-1_HP-0030-20-65FC_CI-BE.2D16000.2E01-1">
+              <Translation AttributeName="Name" Text="Binäreingang 16-fach, 8TE, Eingänge potenzialfrei" />
+              <Translation AttributeName="VisibleDescription" Text="Für potentialfreie Kontakte" />
+            </TranslationElement>
+          </TranslationUnit>
+          <TranslationUnit RefId="M-0083_H-38-1_HP-0026-14-A48C_CI-BE.2DTA55x4.2E01-1">
+            <TranslationElement RefId="M-0083_H-38-1_HP-0026-14-A48C_CI-BE.2DTA55x4.2E01-1">
+              <Translation AttributeName="Name" Text="BE-TA55P4.01 Taster 4-fach / Plus" />
+              <Translation AttributeName="VisibleDescription" Text="Taster 4-fach mit LED, Logik" />
+            </TranslationElement>
+          </TranslationUnit>
+          <TranslationUnit RefId="M-0083_H-SCN.2DIP000.2E01-1-O00C5_HP-0032-10-7995-O00C5_CI-SCN.2DIP000.2E01-1">
+            <TranslationElement RefId="M-0083_H-SCN.2DIP000.2E01-1-O00C5_HP-0032-10-7995-O00C5_CI-SCN.2DIP000.2E01-1">
+              <Translation AttributeName="Name" Text="KNX IP Interface" />
+            </TranslationElement>
+          </TranslationUnit>
+        </Language>
+        <Language Identifier="en-US">
+          <TranslationUnit RefId="M-0083_CS-3">
+            <TranslationElement RefId="M-0083_CS-3">
+              <Translation AttributeName="Name" Text="TP Interfaces/Gateways" />
+            </TranslationElement>
+          </TranslationUnit>
+          <TranslationUnit RefId="M-0083_CS-A.2001">
+            <TranslationElement RefId="M-0083_CS-A.2001">
+              <Translation AttributeName="Name" Text="Actuators" />
+            </TranslationElement>
+          </TranslationUnit>
+          <TranslationUnit RefId="M-0083_CS-A.2001-S.2002">
+            <TranslationElement RefId="M-0083_CS-A.2001-S.2002">
+              <Translation AttributeName="Name" Text="Switch Actuator, Kompakte Ausührung" />
+            </TranslationElement>
+          </TranslationUnit>
+          <TranslationUnit RefId="M-0083_CS-B.2001">
+            <TranslationElement RefId="M-0083_CS-B.2001">
+              <Translation AttributeName="Name" Text="Binary Input" />
+              <Translation AttributeName="VisibleDescription" Text="Binary input" />
+            </TranslationElement>
+          </TranslationUnit>
+          <TranslationUnit RefId="M-0083_CS-B.2001-B.20UE.2001">
+            <TranslationElement RefId="M-0083_CS-B.2001-B.20UE.2001">
+              <Translation AttributeName="Name" Text="Universal Input" />
+            </TranslationElement>
+          </TranslationUnit>
+          <TranslationUnit RefId="M-0083_CS-B.20TA.2001">
+            <TranslationElement RefId="M-0083_CS-B.20TA.2001">
+              <Translation AttributeName="Name" Text="MDT Push button" />
+            </TranslationElement>
+          </TranslationUnit>
+          <TranslationUnit RefId="M-0083_CS-B.20TA.2001-B.20TA.2004">
+            <TranslationElement RefId="M-0083_CS-B.20TA.2001-B.20TA.2004">
+              <Translation AttributeName="Name" Text="MDT Push button 4-fold" />
+            </TranslationElement>
+          </TranslationUnit>
+          <TranslationUnit RefId="M-0083_H-11-1_HP-000B-11-6BE3_CI-AKK.2D0816.2E01-1">
+            <TranslationElement RefId="M-0083_H-11-1_HP-000B-11-6BE3_CI-AKK.2D0816.2E01-1">
+              <Translation AttributeName="Name" Text="AKK-0816.01 Switch Actuator 8-fold, 4TE, 16A" />
+              <Translation AttributeName="VisibleDescription" Text="Compact version 230VAC, 16A ohmic load" />
+            </TranslationElement>
+          </TranslationUnit>
+          <TranslationUnit RefId="M-0083_H-38-1_HP-0026-14-A48C_CI-BE.2DTA55x4.2E01-1">
+            <TranslationElement RefId="M-0083_H-38-1_HP-0026-14-A48C_CI-BE.2DTA55x4.2E01-1">
+              <Translation AttributeName="Name" Text="BE-TA55P4.01 Push button 4-fold / Plus" />
+              <Translation AttributeName="VisibleDescription" Text="Push button 4-fold with LED, Logic" />
+            </TranslationElement>
+          </TranslationUnit>
+        </Language>
+        <Language Identifier="es-ES">
+          <TranslationUnit RefId="M-0083_CS-A.2001">
+            <TranslationElement RefId="M-0083_CS-A.2001">
+              <Translation AttributeName="Name" Text="Actuadores" />
+            </TranslationElement>
+          </TranslationUnit>
+          <TranslationUnit RefId="M-0083_CS-A.2001-S.2002">
+            <TranslationElement RefId="M-0083_CS-A.2001-S.2002">
+              <Translation AttributeName="Name" Text="Actuador de conmutación, versión compacta" />
+            </TranslationElement>
+          </TranslationUnit>
+          <TranslationUnit RefId="M-0083_H-11-1_HP-000B-11-6BE3_CI-AKK.2D0816.2E01-1">
+            <TranslationElement RefId="M-0083_H-11-1_HP-000B-11-6BE3_CI-AKK.2D0816.2E01-1">
+              <Translation AttributeName="Name" Text="AKK-0816.01 Act. de conmutación 8C, 4TE, 16A" />
+              <Translation AttributeName="VisibleDescription" Text="Versión compacta 230VAC, 16A carga resistiva" />
+            </TranslationElement>
+          </TranslationUnit>
+        </Language>
+      </Languages>
+    </Manufacturer>
+  </ManufacturerData>
+</KNX>

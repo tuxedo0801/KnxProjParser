@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*
+ * Copyright (C) 2016 Alexander Christian <alex(at)root1.de>. All rights reserved.
+ * 
+ * This file is part of KnxProjParser.
+ *
+ *   KnxProjParser is free software: you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation, either version 3 of the License, or
+ *   (at your option) any later version.
+ *
+ *   KnxProjParser is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *   along with KnxProjParser.  If not, see <http://www.gnu.org/licenses/>.
+ */
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://root1.de/schema/KnxProj/1"
+            elementFormDefault="qualified" xmlns:tns="http://root1.de/schema/KnxProj/1">
+    <xsd:complexType name="GroupAddress">
+        <xsd:attribute name="Address" type="xsd:string"/>
+        <xsd:attribute name="Name" type="xsd:string"/>
+        <xsd:attribute name="DPT" type="xsd:string"/>
+    </xsd:complexType>
+    <xsd:complexType name="Project">
+        <xsd:attribute name="Name" type="xsd:string"/>
+        <xsd:attribute name="LastModified" type="xsd:dateTime"/>
+        <xsd:attribute name="ProjectStarted" type="xsd:dateTime"/>
+        <xsd:attribute name="CreatedBy" type="xsd:string"/>
+        <xsd:attribute name="ToolVersion" type="xsd:string"/>
+    </xsd:complexType>
+    <xsd:complexType name="GroupAddresses">
+        <xsd:sequence>
+            <xsd:element name="GroupAddress" type="tns:GroupAddress" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="UserDefined">
+        <xsd:sequence>
+            <xsd:element name="GroupAddresses" type="tns:GroupAddresses"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="EtsDefined">
+        <xsd:sequence>
+            <xsd:element name="Project" type="tns:Project"/>
+            <xsd:element name="GroupAddresses" type="tns:GroupAddresses"></xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="checksum" type="xsd:string"/>
+    </xsd:complexType>
+    <xsd:element name="KnxProj">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="EtsDefined" type="tns:EtsDefined" minOccurs="0"/>
+                <xsd:element name="UserDefined" type="tns:UserDefined" minOccurs="0"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<KNX xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" CreatedBy="ETS5" ToolVersion="5.5.575.15318" xmlns="http://knx.org/xml/project/13">
+  <Project Id="P-0B09">
+    <Installations>
+      <Installation InstallationId="0" Name="" BCUKey="4294967295" DefaultLine="P-0B09-0_L-2" IPRoutingMulticastAddress="224.0.23.12" SplitType="None" CompletionStatus="Undefined">
+        <Topology>
+          <Area Id="P-0B09-0_A-0" Name="Backbone Bereich" Address="0" CompletionStatus="Undefined" Puid="1">
+            <Line Id="P-0B09-0_L-0" Name="Bereichslinie" Address="0" MediumTypeRefId="MT-5" DomainAddress="0" CompletionStatus="Undefined" Puid="2" />
+          </Area>
+          <Area Id="P-0B09-0_A-1" Name="Neuer Bereich" Address="1" CompletionStatus="Undefined" Puid="3">
+            <Line Id="P-0B09-0_L-1" Name="Hauptlinie" Address="0" MediumTypeRefId="MT-5" DomainAddress="0" CompletionStatus="Undefined" Puid="4" />
+            <Line Id="P-0B09-0_L-2" Name="Neue Linie" Address="1" MediumTypeRefId="MT-0" DomainAddress="0" CompletionStatus="Undefined" Puid="5">
+              <DeviceInstance Id="P-0B09-0_DI-2" ProductRefId="M-0083_H-SCN.2DIP000.2E01-1-O00C5_P-SCN.2DIP000.2E01" Hardware2ProgramRefId="M-0083_H-SCN.2DIP000.2E01-1-O00C5_HP-0032-10-7995-O00C5" Address="1" LastModified="2016-10-25T08:44:27" CompletionStatus="Undefined" IndividualAddressLoaded="0" ApplicationProgramLoaded="0" ParametersLoaded="0" CommunicationPartLoaded="0" MediumConfigLoaded="0" IsCommunicationObjectVisibilityCalculated="1" Broken="0" Puid="6" />
+              <DeviceInstance Id="P-0B09-0_DI-1" ProductRefId="M-0083_H-38-1_P-BE.2DTA55x4.2E01" Hardware2ProgramRefId="M-0083_H-38-1_HP-0026-14-A48C" Address="2" LastModified="2016-10-25T08:56:09" CompletionStatus="Undefined" IndividualAddressLoaded="0" ApplicationProgramLoaded="0" ParametersLoaded="0" CommunicationPartLoaded="0" MediumConfigLoaded="0" IsCommunicationObjectVisibilityCalculated="1" Broken="0" Puid="7">
+                <ParameterInstanceRefs>
+                  <ParameterInstanceRef RefId="M-0083_A-0026-14-A48C_P-1007_R-1007" Value="2" />
+                  <ParameterInstanceRef RefId="M-0083_A-0026-14-A48C_P-1021_R-1021" Value="2" />
+                  <ParameterInstanceRef RefId="M-0083_A-0026-14-A48C_UP-5500_R-5500" Value="0" />
+                  <ParameterInstanceRef RefId="M-0083_A-0026-14-A48C_UP-5559_R-5559" Value="0" />
+                  <ParameterInstanceRef RefId="M-0083_A-0026-14-A48C_UP-5618_R-5618" Value="0" />
+                  <ParameterInstanceRef RefId="M-0083_A-0026-14-A48C_UP-5677_R-5677" Value="0" />
+                  <ParameterInstanceRef RefId="M-0083_A-0026-14-A48C_P-1_R-1" Value="1" />
+                  <ParameterInstanceRef RefId="M-0083_A-0026-14-A48C_P-2_R-2" Value="1" />
+                </ParameterInstanceRefs>
+                <ComObjectInstanceRefs>
+                  <ComObjectInstanceRef RefId="M-0083_A-0026-14-A48C_O-0_R-11003" IsActive="1">
+                    <Connectors>
+                      <Send GroupAddressRefId="P-0B09-0_GA-2" />
+                    </Connectors>
+                  </ComObjectInstanceRef>
+                  <ComObjectInstanceRef RefId="M-0083_A-0026-14-A48C_O-1_R-11012" IsActive="1" />
+                  <ComObjectInstanceRef RefId="M-0083_A-0026-14-A48C_O-5_R-11031" IsActive="1">
+                    <Connectors>
+                      <Send GroupAddressRefId="P-0B09-0_GA-3" />
+                    </Connectors>
+                  </ComObjectInstanceRef>
+                  <ComObjectInstanceRef RefId="M-0083_A-0026-14-A48C_O-6_R-11040" IsActive="1" />
+                  <ComObjectInstanceRef RefId="M-0083_A-0026-14-A48C_O-10_R-11059" IsActive="1">
+                    <Connectors>
+                      <Send GroupAddressRefId="P-0B09-0_GA-5" />
+                    </Connectors>
+                  </ComObjectInstanceRef>
+                  <ComObjectInstanceRef RefId="M-0083_A-0026-14-A48C_O-11_R-11068" IsActive="1" />
+                  <ComObjectInstanceRef RefId="M-0083_A-0026-14-A48C_O-15_R-11087" IsActive="1">
+                    <Connectors>
+                      <Send GroupAddressRefId="P-0B09-0_GA-6" />
+                    </Connectors>
+                  </ComObjectInstanceRef>
+                  <ComObjectInstanceRef RefId="M-0083_A-0026-14-A48C_O-16_R-11096" IsActive="1" />
+                  <ComObjectInstanceRef RefId="M-0083_A-0026-14-A48C_O-32_R-1" IsActive="1">
+                    <Connectors>
+                      <Send GroupAddressRefId="P-0B09-0_GA-10" />
+                    </Connectors>
+                  </ComObjectInstanceRef>
+                  <ComObjectInstanceRef RefId="M-0083_A-0026-14-A48C_O-33_R-2" IsActive="1">
+                    <Connectors>
+                      <Send GroupAddressRefId="P-0B09-0_GA-11" />
+                    </Connectors>
+                  </ComObjectInstanceRef>
+                </ComObjectInstanceRefs>
+              </DeviceInstance>
+              <DeviceInstance Id="P-0B09-0_DI-3" ProductRefId="M-0083_H-11-1_P-AKK.2D0816.2E01" Hardware2ProgramRefId="M-0083_H-11-1_HP-000B-11-6BE3" Address="3" LastModified="2016-10-25T08:51:19" CompletionStatus="Undefined" IndividualAddressLoaded="0" ApplicationProgramLoaded="0" ParametersLoaded="0" CommunicationPartLoaded="0" MediumConfigLoaded="0" IsCommunicationObjectVisibilityCalculated="1" Broken="0" Puid="26">
+                <ParameterInstanceRefs>
+                  <ParameterInstanceRef RefId="M-0083_A-000B-11-6BE3_P-1019_R-1019" Value="1" />
+                  <ParameterInstanceRef RefId="M-0083_A-000B-11-6BE3_P-1044_R-1044" Value="1" />
+                  <ParameterInstanceRef RefId="M-0083_A-000B-11-6BE3_P-1069_R-1069" Value="1" />
+                  <ParameterInstanceRef RefId="M-0083_A-000B-11-6BE3_P-1094_R-1094" Value="1" />
+                  <ParameterInstanceRef RefId="M-0083_A-000B-11-6BE3_P-1119_R-1119" Value="1" />
+                  <ParameterInstanceRef RefId="M-0083_A-000B-11-6BE3_P-1144_R-1144" Value="1" />
+                  <ParameterInstanceRef RefId="M-0083_A-000B-11-6BE3_P-1169_R-1169" Value="1" />
+                  <ParameterInstanceRef RefId="M-0083_A-000B-11-6BE3_P-1194_R-1194" Value="1" />
+                </ParameterInstanceRefs>
+                <ComObjectInstanceRefs>
+                  <ComObjectInstanceRef RefId="M-0083_A-000B-11-6BE3_O-64_R-10128" IsActive="1">
+                    <Connectors>
+                      <Send GroupAddressRefId="P-0B09-0_GA-1" />
+                    </Connectors>
+                  </ComObjectInstanceRef>
+                  <ComObjectInstanceRef RefId="M-0083_A-000B-11-6BE3_O-0_R-10000" IsActive="1">
+                    <Connectors>
+                      <Send GroupAddressRefId="P-0B09-0_GA-2" />
+                    </Connectors>
+                  </ComObjectInstanceRef>
+                  <ComObjectInstanceRef RefId="M-0083_A-000B-11-6BE3_O-2_R-10002" IsActive="1" />
+                  <ComObjectInstanceRef RefId="M-0083_A-000B-11-6BE3_O-5_R-10005" IsActive="1" />
+                  <ComObjectInstanceRef RefId="M-0083_A-000B-11-6BE3_O-8_R-10016" IsActive="1">
+                    <Connectors>
+                      <Send GroupAddressRefId="P-0B09-0_GA-3" />
+                    </Connectors>
+                  </ComObjectInstanceRef>
+                  <ComObjectInstanceRef RefId="M-0083_A-000B-11-6BE3_O-10_R-10018" IsActive="1" />
+                  <ComObjectInstanceRef RefId="M-0083_A-000B-11-6BE3_O-13_R-10021" IsActive="1" />
+                  <ComObjectInstanceRef RefId="M-0083_A-000B-11-6BE3_O-16_R-10032" IsActive="1">
+                    <Connectors>
+                      <Send GroupAddressRefId="P-0B09-0_GA-4" />
+                    </Connectors>
+                  </ComObjectInstanceRef>
+                  <ComObjectInstanceRef RefId="M-0083_A-000B-11-6BE3_O-18_R-10034" IsActive="1" />
+                  <ComObjectInstanceRef RefId="M-0083_A-000B-11-6BE3_O-21_R-10037" IsActive="1" />
+                  <ComObjectInstanceRef RefId="M-0083_A-000B-11-6BE3_O-24_R-10048" IsActive="1">
+                    <Connectors>
+                      <Send GroupAddressRefId="P-0B09-0_GA-5" />
+                    </Connectors>
+                  </ComObjectInstanceRef>
+                  <ComObjectInstanceRef RefId="M-0083_A-000B-11-6BE3_O-26_R-10050" IsActive="1" />
+                  <ComObjectInstanceRef RefId="M-0083_A-000B-11-6BE3_O-29_R-10053" IsActive="1" />
+                  <ComObjectInstanceRef RefId="M-0083_A-000B-11-6BE3_O-32_R-10064" IsActive="1">
+                    <Connectors>
+                      <Send GroupAddressRefId="P-0B09-0_GA-6" />
+                    </Connectors>
+                  </ComObjectInstanceRef>
+                  <ComObjectInstanceRef RefId="M-0083_A-000B-11-6BE3_O-34_R-10066" IsActive="1" />
+                  <ComObjectInstanceRef RefId="M-0083_A-000B-11-6BE3_O-37_R-10069" IsActive="1" />
+                  <ComObjectInstanceRef RefId="M-0083_A-000B-11-6BE3_O-40_R-10080" IsActive="1">
+                    <Connectors>
+                      <Send GroupAddressRefId="P-0B09-0_GA-7" />
+                    </Connectors>
+                  </ComObjectInstanceRef>
+                  <ComObjectInstanceRef RefId="M-0083_A-000B-11-6BE3_O-42_R-10082" IsActive="1" />
+                  <ComObjectInstanceRef RefId="M-0083_A-000B-11-6BE3_O-45_R-10085" IsActive="1" />
+                  <ComObjectInstanceRef RefId="M-0083_A-000B-11-6BE3_O-50_R-10098" IsActive="1" />
+                  <ComObjectInstanceRef RefId="M-0083_A-000B-11-6BE3_O-53_R-10101" IsActive="1" />
+                  <ComObjectInstanceRef RefId="M-0083_A-000B-11-6BE3_O-56_R-10112" IsActive="1">
+                    <Connectors>
+                      <Send GroupAddressRefId="P-0B09-0_GA-9" />
+                    </Connectors>
+                  </ComObjectInstanceRef>
+                  <ComObjectInstanceRef RefId="M-0083_A-000B-11-6BE3_O-58_R-10114" IsActive="1" />
+                  <ComObjectInstanceRef RefId="M-0083_A-000B-11-6BE3_O-61_R-10117" IsActive="1" />
+                  <ComObjectInstanceRef RefId="M-0083_A-000B-11-6BE3_O-48_R-10096" DatapointType="DPT-1" IsActive="1">
+                    <Connectors>
+                      <Send GroupAddressRefId="P-0B09-0_GA-8" />
+                    </Connectors>
+                  </ComObjectInstanceRef>
+                </ComObjectInstanceRefs>
+              </DeviceInstance>
+              <DeviceInstance Id="P-0B09-0_DI-4" ProductRefId="M-0083_H-30-1_P-BE.2D16000.2E01" Hardware2ProgramRefId="M-0083_H-30-1_HP-0030-20-65FC" Address="4" LastModified="2016-10-25T08:54:48" CompletionStatus="Undefined" IndividualAddressLoaded="0" ApplicationProgramLoaded="0" ParametersLoaded="0" CommunicationPartLoaded="0" MediumConfigLoaded="0" IsCommunicationObjectVisibilityCalculated="1" Broken="0" Puid="60">
+                <ParameterInstanceRefs>
+                  <ParameterInstanceRef RefId="M-0083_A-0030-20-65FC_P-1007_R-1007" Value="2" />
+                  <ParameterInstanceRef RefId="M-0083_A-0030-20-65FC_UP-5500_R-5500" Value="0" />
+                  <ParameterInstanceRef RefId="M-0083_A-0030-20-65FC_UP-5559_R-5559" Value="0" />
+                  <ParameterInstanceRef RefId="M-0083_A-0030-20-65FC_UP-5618_R-5618" Value="0" />
+                  <ParameterInstanceRef RefId="M-0083_A-0030-20-65FC_UP-5677_R-5677" Value="0" />
+                </ParameterInstanceRefs>
+                <ComObjectInstanceRefs>
+                  <ComObjectInstanceRef RefId="M-0083_A-0030-20-65FC_O-0_R-10041" IsActive="1">
+                    <Connectors>
+                      <Send GroupAddressRefId="P-0B09-0_GA-10" />
+                    </Connectors>
+                  </ComObjectInstanceRef>
+                  <ComObjectInstanceRef RefId="M-0083_A-0030-20-65FC_O-1_R-10051" IsActive="1" />
+                  <ComObjectInstanceRef RefId="M-0083_A-0030-20-65FC_O-5_R-10069" IsActive="1">
+                    <Connectors>
+                      <Send GroupAddressRefId="P-0B09-0_GA-11" />
+                    </Connectors>
+                  </ComObjectInstanceRef>
+                  <ComObjectInstanceRef RefId="M-0083_A-0030-20-65FC_O-6_R-10079" IsActive="1" />
+                </ComObjectInstanceRefs>
+              </DeviceInstance>
+            </Line>
+          </Area>
+        </Topology>
+        <Buildings />
+        <GroupAddresses>
+          <GroupRanges>
+            <GroupRange Id="P-0B09-0_GR-1" Name="Schalten" RangeStart="2048" RangeEnd="4095" Puid="70">
+              <GroupRange Id="P-0B09-0_GR-2" Name="Zentral" RangeStart="2048" RangeEnd="2303" Puid="71">
+                <GroupAddress Id="P-0B09-0_GA-1" Address="2049" Name="Schalten.Zentral.Alles" Puid="72" />
+              </GroupRange>
+              <GroupRange Id="P-0B09-0_GR-3" Name="Raum1" RangeStart="2304" RangeEnd="2559" Puid="73">
+                <GroupAddress Id="P-0B09-0_GA-2" Address="2304" Name="Schalten.Raum1.Steckdose" Puid="74" />
+                <GroupAddress Id="P-0B09-0_GA-3" Address="2305" Name="Schalten.Raum1.Wandlicht" Puid="75" />
+                <GroupAddress Id="P-0B09-0_GA-4" Address="2306" Name="Schalten.Raum1.Deckenlicht" Puid="76" />
+                <GroupAddress Id="P-0B09-0_GA-10" Address="2307" Name="Schalten.Raum1.Status" Puid="77" />
+              </GroupRange>
+              <GroupRange Id="P-0B09-0_GR-4" Name="Raum2" RangeStart="2560" RangeEnd="2815" Puid="78">
+                <GroupAddress Id="P-0B09-0_GA-5" Address="2560" Name="Schalten.Raum2.Steckdose" Puid="79" />
+                <GroupAddress Id="P-0B09-0_GA-6" Address="2561" Name="Schalten.Raum2.Wandlicht" Puid="80" />
+                <GroupAddress Id="P-0B09-0_GA-7" Address="2562" Name="Schalten.Raum2.Deckenlicht" Puid="81" />
+                <GroupAddress Id="P-0B09-0_GA-11" Address="2563" Name="Schalten.Raum2.Status" Puid="82" />
+              </GroupRange>
+              <GroupRange Id="P-0B09-0_GR-5" Name="Raum3" RangeStart="2816" RangeEnd="3071" Puid="83">
+                <GroupAddress Id="P-0B09-0_GA-8" Address="2816" Name="Schalten.Raum3.Steckdose" Puid="84" />
+                <GroupAddress Id="P-0B09-0_GA-9" Address="2817" Name="Schalten.Raum3.Wandlicht" Puid="85" />
+              </GroupRange>
+            </GroupRange>
+          </GroupRanges>
+        </GroupAddresses>
+      </Installation>
+    </Installations>
+  </Project>
+</KNX>
