@@ -39,7 +39,8 @@
         <xsd:choice>
             <xsd:sequence>
                 <xsd:element name="ProjectInformation" type="tns:ProjectInformation"/>
-                <xsd:element name="HistoryEntries" type="tns:HistoryEntries"/>
+                <xsd:element name="HistoryEntries" type="tns:HistoryEntries" minOccurs="0"/>
+                <xsd:element name="UserFiles" type="tns:UserFiles" minOccurs="0"/>
             </xsd:sequence>
             <xsd:element name="Installations" type="tns:Installations"/>
         </xsd:choice>
@@ -495,4 +496,10 @@
             <xsd:any processContents="lax"/>
         </xsd:sequence>
     </xsd:complexType>
+   <xsd:complexType name="UserFiles">
+        <!-- ignore any content of this Element -->
+        <xsd:sequence maxOccurs="unbounded" minOccurs="0">
+            <xsd:any processContents="lax"/>
+        </xsd:sequence>
+    </xsd:complexType>    
 </xsd:schema>
