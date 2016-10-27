@@ -112,7 +112,7 @@ public class Project11 extends AbstractKnxParser<KNX> {
             KNX projectXML = readXML(projectFile, KNX.class);
             log.debug("CreatedBy={}", projectXML.getCreatedBy());
             log.debug("ToolVersion={}", projectXML.getToolVersion());
-            
+
             project.setCreatedBy(projectXML.getCreatedBy());
             project.setToolVersion(projectXML.getToolVersion());
 
@@ -120,12 +120,11 @@ public class Project11 extends AbstractKnxParser<KNX> {
             ProjectInformation projectInformation = project.getProjectInformation();
             log.debug("Name={}", projectInformation.getName());
             log.debug("LastModified={}", projectInformation.getLastModified().toGregorianCalendar().getTime());
-            
-            
+
             this.project.setName(projectInformation.getName());
             this.project.setLastModified(projectInformation.getLastModified().toGregorianCalendar().getTime());
             this.project.setProjectStart(projectInformation.getProjectStart().toGregorianCalendar().getTime());
-            
+
             String projectId = projectInformation.getProjectId();
             File idProjectFile = new File(projectFolder, projectId + ".xml");
 
@@ -216,10 +215,12 @@ public class Project11 extends AbstractKnxParser<KNX> {
 
                     // read <ComObject> into localmap
                     Map<String, ComObject> comObjId_to_comObj_map = new HashMap<>();
-                    List<ComObject> comObjectList = aStatic.getComObjectTable().getComObject();
-                    for (ComObject comObject : comObjectList) {
-                        comObjId_to_comObj_map.put(comObject.getId(), comObject);
-                        log.debug("Found ComObject id={}", comObject.getId());
+                    if (aStatic.getComObjectTable() != null) {
+                        List<ComObject> comObjectList = aStatic.getComObjectTable().getComObject();
+                        for (ComObject comObject : comObjectList) {
+                            comObjId_to_comObj_map.put(comObject.getId(), comObject);
+                            log.debug("Found ComObject id={}", comObject.getId());
+                        }
                     }
 
                     ComObjectRefs comObjectRefs = aStatic.getComObjectRefs();
@@ -261,9 +262,9 @@ public class Project11 extends AbstractKnxParser<KNX> {
                 de.root1.knxprojparser.GroupAddress ga = new de.root1.knxprojparser.GroupAddress(groupAddressContainer.getGa(), groupAddressContainer.getName(), dpt);
                 gaList.add(ga);
             }
-            
+
             this.project.setGroupaddressList(gaList);
-            parsed=true;
+            parsed = true;
 
         } catch (JAXBException | SAXException ex) {
             throw new ParseException("Error parsing", ex);
@@ -280,7 +281,7 @@ public class Project11 extends AbstractKnxParser<KNX> {
             if (line.contains("http://knx.org/xml/project/11")) {
                 return true;
             }
-            
+
         } catch (FileNotFoundException ex) {
         } catch (IOException ex) {
         }

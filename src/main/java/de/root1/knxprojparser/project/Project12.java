@@ -215,12 +215,14 @@ public class Project12 extends AbstractKnxParser<KNX> {
 
                     // read <ComObject> into localmap
                     Map<String, ComObject> comObjId_to_comObj_map = new HashMap<>();
-                    List<ComObject> comObjectList = aStatic.getComObjectTable().getComObject();
-                    for (ComObject comObject : comObjectList) {
-                        comObjId_to_comObj_map.put(comObject.getId(), comObject);
-                        log.debug("Found ComObject id={}", comObject.getId());
+                    if (aStatic.getComObjectTable() != null) {
+                        List<ComObject> comObjectList = aStatic.getComObjectTable().getComObject();
+                        for (ComObject comObject : comObjectList) {
+                            comObjId_to_comObj_map.put(comObject.getId(), comObject);
+                            log.debug("Found ComObject id={}", comObject.getId());
+                        }
                     }
-
+                    
                     ComObjectRefs comObjectRefs = aStatic.getComObjectRefs();
                     if (comObjectRefs != null) {
                         List<ComObjectRef> comObjectRefList = comObjectRefs.getComObjectRef();
