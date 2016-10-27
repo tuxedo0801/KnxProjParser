@@ -22,6 +22,7 @@ import de.root1.knxprojparser.GroupAddress;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,7 +33,6 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
-import org.knx.xml.project._11.Project;
 import org.xml.sax.SAXException;
 
 /**
@@ -137,6 +137,26 @@ public abstract class AbstractKnxParser <T>{
     public de.root1.knxprojparser.Project getProject() {
         
         List<GroupAddress> groupaddressList = project.getGroupaddressList();
+        groupaddressList.sort(new Comparator<GroupAddress>(){
+            @Override
+            public int compare(GroupAddress o1, GroupAddress o2) {
+                
+                String[] ga1 = o1.getAddress().split("/");
+                String[] ga2 = o2.getAddress().split("/");
+                
+                int i1 = Integer.parseInt(ga1[0]) <<11 | Integer.parseInt(ga1[1]) <<8 | Integer.parseInt(ga1[2]);
+                int i2 = Integer.parseInt(ga2[0]) <<11 | Integer.parseInt(ga2[1]) <<8 | Integer.parseInt(ga2[2]);
+                
+                if (i1<i2) {
+                    return -1;
+                }
+                if (i1>i2) {
+                    return 1;
+                }
+                return 0;
+            }
+            
+        });
         return project;
     }
     

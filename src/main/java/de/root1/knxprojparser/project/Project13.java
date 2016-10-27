@@ -111,16 +111,16 @@ public class Project13 extends AbstractKnxParser<KNX> {
 
         try {
             KNX projectXML = readXML(projectFile, KNX.class);
-            log.info("CreatedBy={}", projectXML.getCreatedBy());
-            log.info("ToolVersion={}", projectXML.getToolVersion());
+            log.debug("CreatedBy={}", projectXML.getCreatedBy());
+            log.debug("ToolVersion={}", projectXML.getToolVersion());
             
             project.setCreatedBy(projectXML.getCreatedBy());
             project.setToolVersion(projectXML.getToolVersion());
 
             Project project = projectXML.getProject();
             ProjectInformation projectInformation = project.getProjectInformation();
-            log.info("Name={}", projectInformation.getName());
-            log.info("LastModified={}", projectInformation.getLastModified().toGregorianCalendar().getTime());
+            log.debug("Name={}", projectInformation.getName());
+            log.debug("LastModified={}", projectInformation.getLastModified().toGregorianCalendar().getTime());
             
             
             this.project.setName(projectInformation.getName());
@@ -131,7 +131,7 @@ public class Project13 extends AbstractKnxParser<KNX> {
 
             KNX idProjectXML = readXML(idProjectFile, KNX.class);
             Installation installation = idProjectXML.getProject().getInstallations().getInstallation();
-            log.info("getBCUKey={}", installation.getBCUKey());
+            log.debug("getBCUKey={}", installation.getBCUKey());
 
             GroupAddresses groupAddresses = installation.getGroupAddresses();
             List<GroupRange> level1Ranges = groupAddresses.getGroupRanges().getGroupRange();
@@ -147,7 +147,7 @@ public class Project13 extends AbstractKnxParser<KNX> {
                         int[] ga = Utils.convertGroupAddress(intAddr);
                         String strAddr = ga[0] + "/" + ga[1] + "/" + ga[2];
                         String name = groupAddress.getName();
-                        log.info("GA id={} ga={} name={}", id, strAddr, name);
+                        log.debug("GA id={} ga={} name={}", id, strAddr, name);
                         gaId_to_ga_Map.put(id, new GroupAddressContainer(strAddr, name, id));
                     }
 
@@ -174,7 +174,7 @@ public class Project13 extends AbstractKnxParser<KNX> {
                                         String groupAddressRefId = send.getGroupAddressRefId();
                                         GroupAddressContainer gac = gaId_to_ga_Map.get(groupAddressRefId);
 
-                                        log.info("ComObj {} is connected to {}", comObjInstanceRefId, gac.getGa());
+                                        log.debug("ComObj {} is connected to {}", comObjInstanceRefId, gac.getGa());
                                         ga_to_comObjInstanceRefId_map.put(gac, comObjInstanceRefId);
                                     }
                                 }
@@ -198,7 +198,7 @@ public class Project13 extends AbstractKnxParser<KNX> {
                 // obtain manufacturer files
                 String manufacturerFilePrefix = manufacturerFolder.getName();
 
-                log.info("Found manufacturer {}", manufacturerFilePrefix);
+                log.debug("Found manufacturer {}", manufacturerFilePrefix);
 
                 File[] manufacturerFiles = manufacturerFolder.listFiles(new FileFilter() {
                     @Override
@@ -209,7 +209,7 @@ public class Project13 extends AbstractKnxParser<KNX> {
 
                 // for each manufacturer file
                 for (File manufacturerFile : manufacturerFiles) {
-                    log.info("Parsing {}", manufacturerFile);
+                    log.debug("Parsing {}", manufacturerFile);
                     KNX manufacturerXml = readXML(manufacturerFile, KNX.class);
 
                     Static aStatic = manufacturerXml.getManufacturerData().getManufacturer().getApplicationPrograms().getApplicationProgram().getStatic();
@@ -219,7 +219,7 @@ public class Project13 extends AbstractKnxParser<KNX> {
                     List<ComObject> comObjectList = aStatic.getComObjectTable().getComObject();
                     for (ComObject comObject : comObjectList) {
                         comObjId_to_comObj_map.put(comObject.getId(), comObject);
-                        log.info("Found ComObject id={}", comObject.getId());
+                        log.debug("Found ComObject id={}", comObject.getId());
                     }
 
                     ComObjectRefs comObjectRefs = aStatic.getComObjectRefs();
@@ -233,7 +233,7 @@ public class Project13 extends AbstractKnxParser<KNX> {
                             if (dpt != null && !dpt.isEmpty()) {
 
                                 String convertedDpt = Utils.convertDpt(dpt);
-                                log.info("ComObjectRef {} has DPT {}", id, convertedDpt);
+                                log.debug("ComObjectRef {} has DPT {}", id, convertedDpt);
                                 comObjRef_to_dpt_map.put(id, convertedDpt);
 
                             } else {
@@ -243,7 +243,7 @@ public class Project13 extends AbstractKnxParser<KNX> {
                                 ComObject comObj = comObjId_to_comObj_map.get(refId);
                                 String convertedDpt = Utils.convertDpt(comObj.getDatapointType());
 
-                                log.info("ComObjectRef {} has no DPT. But related ComObject has DPT {}", id, convertedDpt);
+                                log.debug("ComObjectRef {} has no DPT. But related ComObject has DPT {}", id, convertedDpt);
 
                                 comObjRef_to_dpt_map.put(id, convertedDpt);
 
@@ -284,7 +284,7 @@ public class Project13 extends AbstractKnxParser<KNX> {
         } catch (FileNotFoundException ex) {
         } catch (IOException ex) {
         }
-        log.info("does not match");
+        log.debug("does not match");
         return false;
     }
 

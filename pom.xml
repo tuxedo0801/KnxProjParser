@@ -82,7 +82,19 @@
                         <source>src/main/resources/xsd</source>
                     </sources>
                 </configuration>
-                
+            </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>de.root1.knxprojparser.KnxProjParser</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
             </plugin>
              
         </plugins>

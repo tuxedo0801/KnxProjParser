@@ -22,7 +22,10 @@ import de.root1.knxprojparser.project.ParseException;
 import de.root1.logging.JulFormatter;
 import java.io.File;
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
 
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -34,7 +37,8 @@ import org.slf4j.LoggerFactory;
  */
 public class TestParser {
 
-    private final Logger log = LoggerFactory.getLogger(getClass());
+    private Logger log = LoggerFactory.getLogger(getClass());
+
 
     public TestParser() {
         JulFormatter.set();
@@ -84,5 +88,13 @@ public class TestParser {
         File out = File.createTempFile("KnxProjParserExportTest", ".xml");
         parser.exportXml(out);
         out.delete();
+    }
+    
+    @Test
+    public void testMain() throws IOException, FileNotSupportedException, ParseException, ExportException {
+        File f = new File(getClass().getResource("/ETS-Samples/ETS4.2.0-KnxProjParser-ExampleProject").getFile().replace("%20", " "));
+        KnxProjParser.main(new String[]{f.getAbsolutePath()});
+        File fout = new File(f.getAbsolutePath()+".parsed.xml");
+        fout.delete();
     }
 }

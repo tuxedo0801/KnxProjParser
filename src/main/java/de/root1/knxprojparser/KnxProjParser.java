@@ -121,7 +121,7 @@ public class KnxProjParser {
         }
 
         if (parser != null) {
-            log.info("parser found: {}", parser.getClass().getName());
+            log.debug("parser found: {}", parser.getClass().getName());
             parser.parse();
         } else {
             throw new FileNotSupportedException("The given knx project is not supported: " + knxprojFile.getAbsolutePath());
@@ -165,7 +165,7 @@ public class KnxProjParser {
                 log.warn("Cannot create checksum for file " + knxprojFile.getAbsolutePath(), ex);
             }
         }
-        log.info("newChecksum={}", newChecksum);
+        log.debug("newChecksum={}", newChecksum);
 
         KnxProj knxproj=null;
 
@@ -176,7 +176,7 @@ public class KnxProjParser {
                 // read old file
                 knxproj = KnxProjXmlService.read(outfile);
                 String oldChecksum = knxproj.getEtsDefined().getChecksum();
-                log.info("oldChecksum={}", oldChecksum);
+                log.debug("oldChecksum={}", oldChecksum);
                 if (!oldChecksum.equals(newChecksum)) {
                     log.info("Existing outfile has DIFFERENT checksum. Update required.");
                 } else {
@@ -190,19 +190,19 @@ public class KnxProjParser {
             }
 
         } else {
-            log.info("outfile does not exist or is empty. Creating one ..");
+            log.debug("outfile does not exist or is empty. Creating one ..");
             knxproj = createNewKnxProj();
         }
         
         // at this stage it's clear, that project has to be parsed, either due to update or new
         if (parser== null || !parser.isParsed()) {
-            log.info("Parsing ...");
+            log.debug("Parsing ...");
             try {
                 parse();
             } catch (ParseException | IOException | FileNotSupportedException ex) {
                 throw new ExportException("Error parsing project", ex);
             }
-            log.info("Parsing ... *DONE*");
+            log.debug("Parsing ... *DONE*");
         }
         
         Project parsed = getProject();
@@ -237,7 +237,7 @@ public class KnxProjParser {
         
         try {
             KnxProjXmlService.write(outfile, knxproj);
-            log.info("Exported to {}", outfile.getAbsolutePath());
+            log.debug("Exported to {}", outfile.getAbsolutePath());
         } catch (JAXBException | SAXException ex) {
             throw new ExportException("Error writing file "+outfile.getAbsolutePath(), ex);
         }
@@ -260,10 +260,6 @@ public class KnxProjParser {
         return knxproj;
     }
     
-    private static void printHelp() {
-        
-    }
-    
     private static final Properties props;
     
     static {
@@ -275,12 +271,19 @@ public class KnxProjParser {
         }
     }
     
-    public static void main(String[] args) {
-        
-        
+    public static void main(String[] args) throws FileNotFoundException, ExportException, IOException, FileNotSupportedException, ParseException {
         System.out.println("");
         System.out.println(props.getProperty("name", "KnxProjParser"));
         System.out.println("-------------------------------------------------");
+        System.out.println("");
+        System.out.println("Reading "+args[0]);
+        KnxProjParser parser = new KnxProjParser(new File(args[0]));
+        System.out.println("Parsing ...");
+        parser.parse();
+        System.out.println("Exporting ...");
+        parser.exportXml(new File(args[0]+".parsed.xml"));
+        System.out.println("DONE!");
+        System.out.println("");
     }
 
 }
