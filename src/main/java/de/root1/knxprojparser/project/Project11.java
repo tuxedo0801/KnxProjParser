@@ -30,6 +30,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import org.knx.xml.project._11.Area;
 import org.knx.xml.project._11.ComObject;
@@ -130,7 +131,7 @@ public class Project11 extends AbstractKnxParser<KNX> {
             }
 
             this.project.setName(projectInformation.getName());
-            if (projectInformation.getProjectStart()!=null) {
+            if (projectInformation.getProjectStart() != null) {
                 this.project.setProjectStart(projectInformation.getProjectStart().toGregorianCalendar().getTime());
             }
 
@@ -175,14 +176,11 @@ public class Project11 extends AbstractKnxParser<KNX> {
                                 String comObjInstanceRefId = comObjectInstanceRef.getRefId();
                                 Connectors connectors = comObjectInstanceRef.getConnectors();
                                 if (connectors != null) {
-                                    List<GroupAddressReference> sendList = connectors.getSend();
-                                    List<GroupAddressReference> receiveList = connectors.getReceive();
-                                    List<GroupAddressReference> list = new ArrayList<>();
-                                    list.addAll(sendList);
-                                    list.addAll(receiveList);
-                                    for (GroupAddressReference ref : list) {
+                                    List<JAXBElement<GroupAddressReference>> sendOrReceive = connectors.getSendOrReceive();
 
-                                        String groupAddressRefId = ref.getGroupAddressRefId();
+                                    for (JAXBElement<GroupAddressReference> ref : sendOrReceive) {
+
+                                        String groupAddressRefId = ref.getValue().getGroupAddressRefId();
                                         GroupAddressContainer gac = gaId_to_ga_Map.get(groupAddressRefId);
 
                                         log.debug("ComObj {} is connected to {}", comObjInstanceRefId, gac.getGa());

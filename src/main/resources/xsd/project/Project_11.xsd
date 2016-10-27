@@ -138,6 +138,7 @@
         <xsd:attribute name="Name" type="xsd:string"/>
         <xsd:attribute name="Description" type="xsd:string"/>
         <xsd:attribute name="Comment" type="xsd:string"/>
+        <xsd:attribute name="DatapointType" type="xsd:string"/>
     </xsd:complexType>
     <xsd:complexType name="Area">
         <xsd:sequence>
@@ -204,6 +205,7 @@
         <xsd:attribute name="Description" type="xsd:string"/>
         <xsd:attribute name="Comment" type="xsd:string"/>
         <xsd:attribute name="InstallationHints" type="xsd:string"/>
+        <xsd:attribute name="ReadMaxRoutingAPDULength" type="xsd:string"/>
     </xsd:complexType>
     <xsd:complexType name="ParameterInstanceRefs">
         <!-- ignore any content of this Element -->
@@ -229,12 +231,15 @@
         <xsd:attribute name="TransmitFlag" type="xsd:string"/>
         <xsd:attribute name="ReadOnInitFlag" type="xsd:string"/>
         <xsd:attribute name="UpdateFlag" type="xsd:string"/>
+        <xsd:attribute name="Priority" type="xsd:string"/>
+        <xsd:attribute name="WriteFlag" type="xsd:string"/>
     </xsd:complexType>
     <xsd:complexType name="Connectors">
-        <xsd:sequence>
+        <!-- Order may be totally unordered.. so need this kind of hack-->
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
             <xsd:element name="Send" type="tns:GroupAddressReference" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Receive" type="tns:GroupAddressReference" minOccurs="0" maxOccurs="unbounded"/>
-        </xsd:sequence>
+        </xsd:choice>
     </xsd:complexType>
     <xsd:complexType name="GroupAddressReference">
         <xsd:attribute name="GroupAddressRefId" type="xsd:string"/>
@@ -249,7 +254,7 @@
     <xsd:complexType name="Manufacturer">
         <xsd:sequence>
             <xsd:element name="ApplicationPrograms" type="tns:ApplicationPrograms"/>
-            <xsd:element name="Languages" type="tns:Languages"/>
+            <xsd:element name="Languages" type="tns:Languages" minOccurs="0"/>
         </xsd:sequence>
         <xsd:attribute name="RefId" type="xsd:string"/>
     </xsd:complexType>
@@ -287,13 +292,14 @@
         <xsd:attribute name="CreatedFromLegacySchemaVersion" type="xsd:string"/>
         <xsd:attribute name="VisibleDescription" type="xsd:string"/>
         <xsd:attribute name="OriginalManufacturer" type="xsd:string"/>
+        <xsd:attribute name="HelpTopic" type="xsd:string"/>
     </xsd:complexType>
     <xsd:complexType name="Static">
         <xsd:all>
-            <xsd:element name="Code" type="tns:Code"/>
-            <xsd:element name="ParameterTypes" type="tns:ParameterTypes"/>
-            <xsd:element name="Parameters" type="tns:Parameters"/>
-            <xsd:element name="ParameterRefs" type="tns:ParameterRefs"/>
+            <xsd:element name="Code" type="tns:Code" minOccurs="0"/>
+            <xsd:element name="ParameterTypes" type="tns:ParameterTypes" minOccurs="0"/>
+            <xsd:element name="Parameters" type="tns:Parameters" minOccurs="0"/>
+            <xsd:element name="ParameterRefs" type="tns:ParameterRefs" minOccurs="0"/>
             <xsd:element name="ComObjectTable" type="tns:ComObjectTable" minOccurs="0"/>
             <xsd:element name="ComObjectRefs" type="tns:ComObjectRefs" minOccurs="0"/>
             <xsd:element name="AddressTable" type="tns:AddressTable" minOccurs="0"/>
@@ -416,6 +422,7 @@
         <xsd:attribute name="TextParameterEncodingSelector" type="xsd:string"/>
         <xsd:attribute name="TextParameterEncoding" type="xsd:string"/>
         <xsd:attribute name="Comparable" type="xsd:string"/>
+        <xsd:attribute name="Reconstructable" type="xsd:string"/>
     </xsd:complexType>
     <xsd:complexType name="Languages">
         <!-- ignore any content of this Element -->
