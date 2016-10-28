@@ -43,10 +43,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-import java.util.logging.Level;
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.XMLGregorianCalendar;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
@@ -209,6 +207,7 @@ public class KnxProjParser {
 
         Project parsed = getProject();
         EtsDefined etsDefined = knxproj.getEtsDefined();
+        UserDefined userDefined = knxproj.getUserDefined();
         etsDefined.setChecksum(newChecksum);
         de.root1.schema.knxproj._1.Project project = etsDefined.getProject();
 
@@ -229,15 +228,47 @@ public class KnxProjParser {
 
         // setting GAs
         List<de.root1.schema.knxproj._1.GroupAddress> gaList = etsDefined.getGroupAddresses().getGroupAddress();
+
+        List<de.root1.schema.knxproj._1.GroupAddress> gaListIncomplete = etsDefined.getIncompleteAddresses().getGroupAddress();
+
         gaList.clear();
+        gaListIncomplete.clear();
+        boolean etsKonnektingGaFound = false;
         for (GroupAddress ga : parsed.getGroupaddressList()) {
 
             de.root1.schema.knxproj._1.GroupAddress insertGa = new de.root1.schema.knxproj._1.GroupAddress();
 
+            if (ga.getAddress().equals("15/7/255")) {
+                etsKonnektingGaFound = true;
+            }
+            
             insertGa.setAddress(ga.getAddress());
             insertGa.setName(ga.getName());
             insertGa.setDPT(ga.getDPT());
-            gaList.add(insertGa);
+
+            if (insertGa.getDPT() == null || insertGa.getDPT().isEmpty() || insertGa.getDPT().equals("0.000")) {
+                insertGa.setDPT("");
+                gaListIncomplete.add(insertGa);
+            } else {
+                gaList.add(insertGa);
+            }
+        }
+        
+        boolean userKonnektingGaFound = false;
+        for(de.root1.schema.knxproj._1.GroupAddress ga : userDefined.getGroupAddresses().getGroupAddress()) {
+            if (ga.getAddress().equals("15/7/255")) {
+                userKonnektingGaFound =true;
+                break;
+            }
+        }
+        
+        if (!etsKonnektingGaFound && !userKonnektingGaFound) {
+            de.root1.schema.knxproj._1.GroupAddress konnektingGa = new de.root1.schema.knxproj._1.GroupAddress();
+            konnektingGa.setName("KONNEKTING.Programming");
+            konnektingGa.setDPT("60000.60000");
+            konnektingGa.setAddress("15/7/255");
+            konnektingGa.setComment("created by "+props.getProperty("name","KnxProjParser"));
+            userDefined.getGroupAddresses().getGroupAddress().add(konnektingGa);
         }
 
         try {
@@ -255,6 +286,7 @@ public class KnxProjParser {
 
         EtsDefined etsdefined = factory.createEtsDefined();
         etsdefined.setGroupAddresses(factory.createGroupAddresses());
+        etsdefined.setIncompleteAddresses(factory.createIncompleteAddresses());
         etsdefined.setProject(factory.createProject());
 
         UserDefined userdefined = factory.createUserDefined();
