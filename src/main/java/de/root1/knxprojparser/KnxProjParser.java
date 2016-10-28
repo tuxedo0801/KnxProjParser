@@ -31,6 +31,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import static java.lang.Thread.interrupted;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.file.FileVisitResult;
@@ -43,6 +44,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.logging.Level;
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
 import org.slf4j.Logger;
@@ -307,18 +309,47 @@ public class KnxProjParser {
         } catch (IOException ex) {
         }
     }
+    
+    static class Dots implements Runnable {
+
+        @Override
+            public void run() {
+                while (!interrupted()) {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException ex) {
+                        Thread.currentThread().interrupt();
+                    }
+                    System.out.print(".");
+                }
+            }
+        
+    }
 
     public static void main(String[] args) throws FileNotFoundException, ExportException, IOException, FileNotSupportedException, ParseException {
         System.out.println("");
         System.out.println(props.getProperty("name", "KnxProjParser"));
         System.out.println("-------------------------------------------------");
         System.out.println("");
-        System.out.println("Reading " + args[0]);
+        File f = new File(args[0]);
+        if (!Boolean.getBoolean("supppressFilePath")) {
+            System.out.println("Reading " + f.getAbsolutePath());
+        } else {
+            System.out.println("Reading " + f.getName());
+        }
         KnxProjParser parser = new KnxProjParser(new File(args[0]));
-        System.out.println("Parsing ...");
+        System.out.print("Parsing .");
+        Thread t = new Thread(new Dots());
+        t.start();
         parser.parse();
-        System.out.println("Exporting ...");
+        t.interrupt();
+        System.out.println("");
+        System.out.print("Exporting .");
+        Thread t2 = new Thread(new Dots());
+        t2.start();
         parser.exportXml(new File(args[0] + ".parsed.xml"));
+        t2.interrupt();
+        System.out.println("");
         System.out.println("DONE!");
         System.out.println("");
     }
