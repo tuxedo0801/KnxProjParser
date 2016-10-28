@@ -315,12 +315,12 @@ public class KnxProjParser {
         @Override
             public void run() {
                 while (!interrupted()) {
+                    System.out.print(".");
                     try {
                         Thread.sleep(500);
                     } catch (InterruptedException ex) {
                         Thread.currentThread().interrupt();
                     }
-                    System.out.print(".");
                 }
             }
         
