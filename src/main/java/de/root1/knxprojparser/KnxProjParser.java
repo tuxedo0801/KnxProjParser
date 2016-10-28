@@ -336,6 +336,7 @@ public class KnxProjParser {
             System.out.print("Reading " + f.getAbsolutePath());
         }
         Thread t0 = new Thread(new Dots());
+        t0.setDaemon(true);
         t0.start();
         KnxProjParser parser = new KnxProjParser(new File(args[0]));
         t0.interrupt();
@@ -343,13 +344,14 @@ public class KnxProjParser {
         
         System.out.print("Parsing ");
         Thread t1 = new Thread(new Dots());
+        t1.setDaemon(true);
         t1.start();
         parser.parse();
-        t1.interrupt();
         System.out.println(" OK");
         
         System.out.print("Exporting ");
         Thread t2 = new Thread(new Dots());
+        t2.setDaemon(true);
         t2.start();
         parser.exportXml(new File(args[0] + ".parsed.xml"));
         t2.interrupt();
