@@ -83,6 +83,7 @@
         <xsd:attribute name="IPRoutingMulticastAddress" type="xsd:string"/>
         <xsd:attribute name="SplitType" type="xsd:string"/>
         <xsd:attribute name="CompletionStatus" type="xsd:string"/>
+        <xsd:attribute name="IPRoutingLatencyTolerance" type="xsd:string"/>
     </xsd:complexType>
     <xsd:complexType name="Topology">
         <xsd:sequence maxOccurs="1" minOccurs="0">
@@ -145,6 +146,8 @@
         <xsd:attribute name="Description" type="xsd:string"/>
         <xsd:attribute name="Comment" type="xsd:string"/>
         <xsd:attribute name="DatapointType" type="xsd:string"/>
+        <xsd:attribute name="Central" type="xsd:string"/>
+        <xsd:attribute name="Unfiltered" type="xsd:string"/>
     </xsd:complexType>
     <xsd:complexType name="Area">
         <xsd:sequence>
@@ -189,10 +192,12 @@
         <xsd:attribute name="Description" type="xsd:string"/>
     </xsd:complexType>
     <xsd:complexType name="DeviceInstance">
-        <xsd:sequence>
+        <xsd:all>
             <xsd:element name="ParameterInstanceRefs" type="tns:ParameterInstanceRefs" minOccurs="0"/>
             <xsd:element name="ComObjectInstanceRefs" type="tns:ComObjectInstanceRefs" minOccurs="0"/>
-        </xsd:sequence>
+            <xsd:element name="BinaryData" type="tns:BinaryData" minOccurs="0"/>
+            <xsd:element name="ChannelInstances" type="tns:ChannelInstances" minOccurs="0"/>
+        </xsd:all>
         <xsd:attribute name="Id" type="xsd:string"/>
         <xsd:attribute name="ProductRefId" type="xsd:string"/>
         <xsd:attribute name="Hardware2ProgramRefId" type="xsd:string"/>
@@ -216,6 +221,7 @@
         <xsd:attribute name="InstallationHints" type="xsd:string"/>
         <xsd:attribute name="SerialNumber" type="xsd:string"/>
         <xsd:attribute name="ReadMaxRoutingAPDULength" type="xsd:string"/>
+        <xsd:attribute name="LastUsedAPDULength" type="xsd:string"/>
     </xsd:complexType>
     <xsd:complexType name="ParameterInstanceRefs">
         <!-- ignore any content of this Element -->
@@ -244,6 +250,9 @@
         <xsd:attribute name="UpdateFlag" type="xsd:string"/>
         <xsd:attribute name="Priority" type="xsd:string"/>
         <xsd:attribute name="WriteFlag" type="xsd:string"/>
+        <xsd:attribute name="CommunicationFlag" type="xsd:string"/>
+        <xsd:attribute name="Text" type="xsd:string"/>
+        <xsd:attribute name="ChannelId" type="xsd:string"/>
     </xsd:complexType>
     <xsd:complexType name="Connectors">
         <!-- Order may be totally unordered.. so need this kind of hack-->
@@ -275,10 +284,10 @@
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="ApplicationProgram">
-        <xsd:sequence>
-            <xsd:element name="Static" type="tns:Static"/>
-            <xsd:element name="Dynamic" type="tns:Dynamic"/>
-        </xsd:sequence>
+        <xsd:all>
+            <xsd:element name="Static" type="tns:Static" minOccurs="0"/>
+            <xsd:element name="Dynamic" type="tns:Dynamic" minOccurs="0"/>
+        </xsd:all>
         <xsd:attribute name="Id" type="xsd:string"/>
         <xsd:attribute name="Name" type="xsd:string"/>
         <xsd:attribute name="ApplicationNumber" type="xsd:string"/>
@@ -319,6 +328,8 @@
             <xsd:element name="Extension" type="tns:Extension" minOccurs="0"/>
             <xsd:element name="Options" type="tns:Options" minOccurs="0"/>
             <xsd:element name="DeviceCompare" type="tns:DeviceCompare" minOccurs="0"/>
+            <xsd:element name="FixupList" type="tns:FixupList" minOccurs="0"/>
+            <xsd:element name="ParameterCalculations" minOccurs="0" type="tns:ParameterCalculations"/>
         </xsd:all>
     </xsd:complexType>
     
@@ -402,6 +413,7 @@
         <xsd:attribute name="RequiresExternalSoftware" type="xsd:string"/>
         <xsd:attribute name="EtsDownloadPlugin" type="xsd:string"/>
         <xsd:attribute name="EtsUiPlugin" type="xsd:string"/>
+        <xsd:attribute name="EtsDataHandler" type="xsd:string"/>
     </xsd:complexType>
     <xsd:complexType name="Options">
         <!-- ignore any content of this Element -->
@@ -483,6 +495,7 @@
         <xsd:attribute name="WriteFlag" type="xsd:string"/>
         <xsd:attribute name="TransmitFlag" type="xsd:string"/>
         <xsd:attribute name="Name" type="xsd:string"/>
+        <xsd:attribute name="Priority" type="xsd:string"/>
     </xsd:complexType>
     <xsd:complexType name="HistoryEntries">
         <!-- ignore any content of this Element -->
@@ -496,10 +509,35 @@
             <xsd:any processContents="lax"/>
         </xsd:sequence>
     </xsd:complexType>
-   <xsd:complexType name="UserFiles">
+    <xsd:complexType name="UserFiles">
         <!-- ignore any content of this Element -->
         <xsd:sequence maxOccurs="unbounded" minOccurs="0">
             <xsd:any processContents="lax"/>
         </xsd:sequence>
     </xsd:complexType>    
+    <xsd:complexType name="BinaryData">
+        <!-- ignore any content of this Element -->
+        <xsd:sequence maxOccurs="unbounded" minOccurs="0">
+            <xsd:any processContents="lax"/>
+        </xsd:sequence>
+    </xsd:complexType>    
+    <xsd:complexType name="ChannelInstances">
+        <!-- ignore any content of this Element -->
+        <xsd:sequence maxOccurs="unbounded" minOccurs="0">
+            <xsd:any processContents="lax"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="FixupList">
+        <!-- ignore any content of this Element -->
+        <xsd:sequence maxOccurs="unbounded" minOccurs="0">
+            <xsd:any processContents="lax"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ParameterCalculations">
+        <!-- ignore any content of this Element -->
+        <xsd:sequence maxOccurs="unbounded" minOccurs="0">
+            <xsd:any processContents="lax"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
 </xsd:schema>
