@@ -23,9 +23,10 @@
             targetNamespace="http://root1.de/schema/KnxProj/1"
             elementFormDefault="qualified" xmlns:tns="http://root1.de/schema/KnxProj/1">
     <xsd:complexType name="GroupAddress">
-        <xsd:attribute name="Address" type="xsd:string"/>
-        <xsd:attribute name="Name" type="xsd:string"/>
+        <xsd:attribute name="Address" type="xsd:string" use="required"/>
+        <xsd:attribute name="Name" type="xsd:string" use="required"/>
         <xsd:attribute name="DPT" type="xsd:string"/>
+        <xsd:attribute name="Comment" type="xsd:string"/>
     </xsd:complexType>
     <xsd:complexType name="Project">
         <xsd:attribute name="Name" type="xsd:string"/>
@@ -48,9 +49,16 @@
         <xsd:sequence>
             <xsd:element name="Project" type="tns:Project"/>
             <xsd:element name="GroupAddresses" type="tns:GroupAddresses"></xsd:element>
+            <xsd:element name="IncompleteAddresses" type="tns:IncompleteAddresses"/>
         </xsd:sequence>
         <xsd:attribute name="checksum" type="xsd:string"/>
     </xsd:complexType>
+    <xsd:complexType name="IncompleteAddresses">
+        <xsd:sequence>
+            <xsd:element name="GroupAddress" type="tns:GroupAddress" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
     <xsd:element name="KnxProj">
         <xsd:complexType>
             <xsd:sequence>

@@ -31,6 +31,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import static java.lang.Thread.interrupted;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.file.FileVisitResult;
@@ -46,7 +47,6 @@ import java.util.Properties;
 import java.util.logging.Level;
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.XMLGregorianCalendar;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
@@ -209,6 +209,7 @@ public class KnxProjParser {
 
         Project parsed = getProject();
         EtsDefined etsDefined = knxproj.getEtsDefined();
+        UserDefined userDefined = knxproj.getUserDefined();
         etsDefined.setChecksum(newChecksum);
         de.root1.schema.knxproj._1.Project project = etsDefined.getProject();
 
@@ -229,15 +230,47 @@ public class KnxProjParser {
 
         // setting GAs
         List<de.root1.schema.knxproj._1.GroupAddress> gaList = etsDefined.getGroupAddresses().getGroupAddress();
+
+        List<de.root1.schema.knxproj._1.GroupAddress> gaListIncomplete = etsDefined.getIncompleteAddresses().getGroupAddress();
+
         gaList.clear();
+        gaListIncomplete.clear();
+        boolean etsKonnektingGaFound = false;
         for (GroupAddress ga : parsed.getGroupaddressList()) {
 
             de.root1.schema.knxproj._1.GroupAddress insertGa = new de.root1.schema.knxproj._1.GroupAddress();
 
+            if (ga.getAddress().equals("15/7/255")) {
+                etsKonnektingGaFound = true;
+            }
+            
             insertGa.setAddress(ga.getAddress());
             insertGa.setName(ga.getName());
             insertGa.setDPT(ga.getDPT());
-            gaList.add(insertGa);
+
+            if (insertGa.getDPT() == null || insertGa.getDPT().isEmpty() || insertGa.getDPT().equals("0.000")) {
+                insertGa.setDPT("");
+                gaListIncomplete.add(insertGa);
+            } else {
+                gaList.add(insertGa);
+            }
+        }
+        
+        boolean userKonnektingGaFound = false;
+        for(de.root1.schema.knxproj._1.GroupAddress ga : userDefined.getGroupAddresses().getGroupAddress()) {
+            if (ga.getAddress().equals("15/7/255")) {
+                userKonnektingGaFound =true;
+                break;
+            }
+        }
+        
+        if (!etsKonnektingGaFound && !userKonnektingGaFound) {
+            de.root1.schema.knxproj._1.GroupAddress konnektingGa = new de.root1.schema.knxproj._1.GroupAddress();
+            konnektingGa.setName("KONNEKTING.Programming");
+            konnektingGa.setDPT("60000.60000");
+            konnektingGa.setAddress("15/7/255");
+            konnektingGa.setComment("created by "+props.getProperty("name","KnxProjParser"));
+            userDefined.getGroupAddresses().getGroupAddress().add(konnektingGa);
         }
 
         try {
@@ -255,6 +288,7 @@ public class KnxProjParser {
 
         EtsDefined etsdefined = factory.createEtsDefined();
         etsdefined.setGroupAddresses(factory.createGroupAddresses());
+        etsdefined.setIncompleteAddresses(factory.createIncompleteAddresses());
         etsdefined.setProject(factory.createProject());
 
         UserDefined userdefined = factory.createUserDefined();
@@ -275,18 +309,54 @@ public class KnxProjParser {
         } catch (IOException ex) {
         }
     }
+    
+    static class Dots implements Runnable {
+
+        @Override
+            public void run() {
+                while (!interrupted()) {
+                    System.out.print(".");
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException ex) {
+                        Thread.currentThread().interrupt();
+                    }
+                }
+            }
+        
+    }
 
     public static void main(String[] args) throws FileNotFoundException, ExportException, IOException, FileNotSupportedException, ParseException {
-        System.out.println("");
-        System.out.println(props.getProperty("name", "KnxProjParser"));
-        System.out.println("-------------------------------------------------");
-        System.out.println("");
-        System.out.println("Reading " + args[0]);
+        System.out.println("["+props.getProperty("name", "KnxProjParser")+"]");
+        File f = new File(args[0]);
+        
+        if (Boolean.getBoolean("supppressFilePath")) {
+            System.out.print("Reading " + f.getName());
+        } else {
+            System.out.print("Reading " + f.getAbsolutePath());
+        }
+        Thread t0 = new Thread(new Dots());
+        t0.setDaemon(true);
+        t0.start();
         KnxProjParser parser = new KnxProjParser(new File(args[0]));
-        System.out.println("Parsing ...");
+        t0.interrupt();
+        System.out.println(" OK");
+        
+        System.out.print("Parsing ");
+        Thread t1 = new Thread(new Dots());
+        t1.setDaemon(true);
+        t1.start();
         parser.parse();
-        System.out.println("Exporting ...");
+        System.out.println(" OK");
+        
+        System.out.print("Exporting ");
+        Thread t2 = new Thread(new Dots());
+        t2.setDaemon(true);
+        t2.start();
         parser.exportXml(new File(args[0] + ".parsed.xml"));
+        t2.interrupt();
+        System.out.println(" OK");
+        
         System.out.println("DONE!");
         System.out.println("");
     }
