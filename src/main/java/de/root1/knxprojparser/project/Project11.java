@@ -70,7 +70,7 @@ public class Project11 extends AbstractKnxParser<KNX> {
         /**
          * P-0B09-0_GA-6 -> GroupAddressContainer
          */
-        Map<String, GroupAddressContainer> gaId_to_ga_Map = new HashMap<>();
+        Map<String, GroupAddressContainer> gaId_to_ga_map = new HashMap<>();
 
         /**
          * GroupAddressContainer -> M-0083_A-0026-14-05BA_O-0_R-11026
@@ -154,7 +154,7 @@ public class Project11 extends AbstractKnxParser<KNX> {
                         String strAddr = ga[0] + "/" + ga[1] + "/" + ga[2];
                         String name = groupAddress.getName();
                         log.debug("GA id={} ga={} name={}", id, strAddr, name);
-                        gaId_to_ga_Map.put(id, new GroupAddressContainer(strAddr, name, id));
+                        gaId_to_ga_map.put(id, new GroupAddressContainer(strAddr, name, id));
                         
                         // check if DPT is already known on GA itself
                         String dptString = groupAddress.getDatapointType();
@@ -180,19 +180,29 @@ public class Project11 extends AbstractKnxParser<KNX> {
                             List<ComObjectInstanceRef> comObjectInstanceRefList = comObjectInstanceRefs.getComObjectInstanceRef();
                             for (ComObjectInstanceRef comObjectInstanceRef : comObjectInstanceRefList) {
                                 String comObjInstanceRefId = comObjectInstanceRef.getRefId();
+                                
+                                String dptString = comObjectInstanceRef.getDatapointType();
+                                
                                 Connectors connectors = comObjectInstanceRef.getConnectors();
                                 if (connectors != null) {
                                     List<JAXBElement<GroupAddressReference>> sendOrReceive = connectors.getSendOrReceive();
-
+                                    
                                     for (JAXBElement<GroupAddressReference> ref : sendOrReceive) {
 
                                         String groupAddressRefId = ref.getValue().getGroupAddressRefId();
-                                        GroupAddressContainer gac = gaId_to_ga_Map.get(groupAddressRefId);
+                                        GroupAddressContainer gac = gaId_to_ga_map.get(groupAddressRefId);
 
                                         log.debug("ComObj {} is connected to {}", comObjInstanceRefId, gac.getGa());
                                         ga_to_comObjInstanceRefId_map.put(gac, comObjInstanceRefId);
+                                        
+                                        if(dptString!=null && !dptString.isEmpty()) {
+                                            String dpt = Utils.convertDpt(dptString);
+                                            gaId_to_dpt_map.put(gac.getRefId(), dpt);
+                                        }
+                                        
                                     }
                                 }
+
                             }
                         }
                     }
@@ -271,7 +281,7 @@ public class Project11 extends AbstractKnxParser<KNX> {
 
             }
 
-            Collection<GroupAddressContainer> gac = gaId_to_ga_Map.values();
+            Collection<GroupAddressContainer> gac = gaId_to_ga_map.values();
             for (GroupAddressContainer groupAddressContainer : gac) {
                 String comObjectInstanceRefId = ga_to_comObjInstanceRefId_map.get(groupAddressContainer);
                 String dpt;

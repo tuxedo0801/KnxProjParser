@@ -179,6 +179,9 @@ public class Project13 extends AbstractKnxParser<KNX> {
                             List<ComObjectInstanceRef> comObjectInstanceRefList = comObjectInstanceRefs.getComObjectInstanceRef();
                             for (ComObjectInstanceRef comObjectInstanceRef : comObjectInstanceRefList) {
                                 String comObjInstanceRefId = comObjectInstanceRef.getRefId();
+                                
+                                String dptString = comObjectInstanceRef.getDatapointType();
+                                
                                 Connectors connectors = comObjectInstanceRef.getConnectors();
                                 if (connectors != null) {
                                     List<JAXBElement<GroupAddressReference>> sendOrReceive = connectors.getSendOrReceive();
@@ -190,6 +193,12 @@ public class Project13 extends AbstractKnxParser<KNX> {
 
                                         log.debug("ComObj {} is connected to {}", comObjInstanceRefId, gac.getGa());
                                         ga_to_comObjInstanceRefId_map.put(gac, comObjInstanceRefId);
+                                        
+                                        if(dptString!=null && !dptString.isEmpty()) {
+                                            String dpt = Utils.convertDpt(dptString);
+                                            gaId_to_dpt_map.put(gac.getRefId(), dpt);
+                                        }
+                                        
                                     }
                                 }
 
