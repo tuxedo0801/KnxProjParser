@@ -42,12 +42,12 @@ public class TestParser {
     private Logger log = LoggerFactory.getLogger(getClass());
 
     static {
-        java.util.logging.Logger logger = java.util.logging.Logger.getLogger("");
-        logger.setLevel(Level.ALL);
-        Handler[] handlers = logger.getHandlers();
-        for (Handler handler : handlers) {
-            handler.setLevel(Level.ALL);
-        }
+//        java.util.logging.Logger logger = java.util.logging.Logger.getLogger("");
+//        logger.setLevel(Level.ALL);
+//        Handler[] handlers = logger.getHandlers();
+//        for (Handler handler : handlers) {
+//            handler.setLevel(Level.ALL);
+//        }
     }
 
     public TestParser() {
