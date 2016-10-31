@@ -41,10 +41,8 @@ import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-import java.util.logging.Level;
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
 import org.slf4j.Logger;
@@ -158,7 +156,7 @@ public class KnxProjParser {
         return parser.getProject();
     }
 
-    public void exportXml(File outfile) throws ExportException {
+    public boolean exportXml(File outfile) throws ExportException {
         String newChecksum = "notAvailable";
         if (knxprojFile.isFile()) {
             try {
@@ -184,7 +182,7 @@ public class KnxProjParser {
                 } else {
                     log.info("Existing outfile has SAME checksum. No operation required.");
                     /* !!! RETURN due to no operation required !!! */
-                    return;
+                    return false;
                 }
 
             } catch (JAXBException | SAXException ex) {
@@ -279,7 +277,7 @@ public class KnxProjParser {
         } catch (JAXBException | SAXException ex) {
             throw new ExportException("Error writing file " + outfile.getAbsolutePath(), ex);
         }
-
+        return true;
     }
 
     private KnxProj createNewKnxProj() {
@@ -316,6 +314,7 @@ public class KnxProjParser {
             public void run() {
                 while (!interrupted()) {
                     System.out.print(".");
+                    System.out.flush();
                     try {
                         Thread.sleep(500);
                     } catch (InterruptedException ex) {
@@ -353,9 +352,9 @@ public class KnxProjParser {
         Thread t2 = new Thread(new Dots());
         t2.setDaemon(true);
         t2.start();
-        parser.exportXml(new File(args[0] + ".parsed.xml"));
+        boolean result = parser.exportXml(new File(args[0] + ".parsed.xml"));
         t2.interrupt();
-        System.out.println(" OK");
+        System.out.println((result?" OK":" Same file already present, no export required."));
         
         System.out.println("DONE!");
         System.out.println("");

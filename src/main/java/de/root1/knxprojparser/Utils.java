@@ -167,16 +167,28 @@ public class Utils {
         String result = "";
 
         if (dpt != null && !dpt.isEmpty()) {
-            dpt = dpt.split(" ")[0];
-            String[] split = dpt.split("-");
-            if (split[0].equals("DPST")) {
-                mainType = Integer.parseInt(split[1]);
-                subType = Integer.parseInt(split[2]);
-//            groupAddress.setDataPointType(mainType, subType);
-            } else if (split[0].equals("DPT")) {
-                mainType = Integer.parseInt(split[1]);
-                subType = 0;
-//            groupAddress.setDataPointType(mainType, subType);
+
+            if (dpt.contains("DPST") || dpt.contains("DPT")) {
+                dpt = dpt.split(" ")[0];
+                String[] split = dpt.split("-");
+                if (split[0].equals("DPST")) {
+                    mainType = Integer.parseInt(split[1]);
+                    subType = Integer.parseInt(split[2]);
+                } else if (split[0].equals("DPT")) {
+                    mainType = Integer.parseInt(split[1]);
+                    subType = 0;
+                }
+            } else {
+
+                switch (dpt) {
+                    case "1 Bit":
+                        return "1.001";
+                    case "2 Bit":
+                        return "2.001";
+                    default:
+                        return "0.000";
+                }
+
             }
         }
 

@@ -24,8 +24,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -39,9 +41,23 @@ public class TestParser {
 
     private Logger log = LoggerFactory.getLogger(getClass());
 
+    static {
+        java.util.logging.Logger logger = java.util.logging.Logger.getLogger("");
+        logger.setLevel(Level.ALL);
+        Handler[] handlers = logger.getHandlers();
+        for (Handler handler : handlers) {
+            handler.setLevel(Level.ALL);
+        }
+    }
 
     public TestParser() {
         JulFormatter.set();
+    }
+    
+    @Test
+    public void testUtilsdConvertDpt(){
+        String convertDpt = Utils.convertDpt("1 Bit");
+        assertEquals("1 Bit needs to convert to 1.001", "1.001", convertDpt);
     }
 
     @Test

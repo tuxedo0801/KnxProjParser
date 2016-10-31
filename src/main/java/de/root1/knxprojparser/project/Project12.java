@@ -25,7 +25,6 @@ import java.io.FileFilter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -62,12 +61,6 @@ public class Project12 extends AbstractKnxParser<KNX> {
 
     private final Logger log = LoggerFactory.getLogger(Project12.class);
 
-    /*
-    knx_master.xml ->   xmlns="http://knx.org/xml/project/11"
-    Project.xml ->      xmlns="http://knx.org/xml/project/11"
-    0.xml ->            xmlns="http://knx.org/xml/project/11"
-    M....xml ->         xmlns="http://knx.org/xml/project/11"
-     */
     public Project12(File baseFolder) throws SAXException {
         super("/xsd/project/Project_12.xsd", baseFolder);
     }
@@ -90,6 +83,11 @@ public class Project12 extends AbstractKnxParser<KNX> {
          * M-0083_A-0026-14-05BA_O-0_R-11026 -> 1.001
          */
         Map<String, String> comObjRef_to_dpt_map = new HashMap<>();
+
+        /**
+         * P-0B09-0_GA-6 -> "1.001"
+         */
+        Map<String, String> gaId_to_dpt_map = new HashMap<>();
 
         File[] projectFolders = baseFolder.listFiles(new FileFilter() {
             @Override
@@ -154,6 +152,13 @@ public class Project12 extends AbstractKnxParser<KNX> {
                         String name = groupAddress.getName();
                         log.debug("GA id={} ga={} name={}", id, strAddr, name);
                         gaId_to_ga_Map.put(id, new GroupAddressContainer(strAddr, name, id));
+
+                        // check if DPT is already known on GA itself
+                        String dptString = groupAddress.getDatapointType();
+                        if (dptString != null && !dptString.isEmpty()) {
+                            String dpt = Utils.convertDpt(dptString);
+                            gaId_to_dpt_map.put(id, dpt);
+                        }
                     }
 
                 }
@@ -174,7 +179,7 @@ public class Project12 extends AbstractKnxParser<KNX> {
                                 Connectors connectors = comObjectInstanceRef.getConnectors();
                                 if (connectors != null) {
                                     List<JAXBElement<GroupAddressReference>> sendOrReceive = connectors.getSendOrReceive();
-                                    
+
                                     for (JAXBElement<GroupAddressReference> ref : sendOrReceive) {
 
                                         String groupAddressRefId = ref.getValue().getGroupAddressRefId();
@@ -266,7 +271,12 @@ public class Project12 extends AbstractKnxParser<KNX> {
             Collection<GroupAddressContainer> gac = gaId_to_ga_Map.values();
             for (GroupAddressContainer groupAddressContainer : gac) {
                 String comObjectInstanceRefId = ga_to_comObjInstanceRefId_map.get(groupAddressContainer);
-                String dpt = comObjRef_to_dpt_map.get(comObjectInstanceRefId);
+                String dpt;
+                if (gaId_to_dpt_map.containsKey(groupAddressContainer.getRefId())) {
+                    dpt = gaId_to_dpt_map.get(groupAddressContainer.getRefId());
+                } else {
+                    dpt = comObjRef_to_dpt_map.get(comObjectInstanceRefId);
+                }
                 de.root1.knxprojparser.GroupAddress ga = new de.root1.knxprojparser.GroupAddress(groupAddressContainer.getGa(), groupAddressContainer.getName(), dpt);
                 gaList.add(ga);
             }
