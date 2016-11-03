@@ -48,7 +48,7 @@ import org.slf4j.LoggerFactory;
 public class Utils {
 
     private static final Logger log = LoggerFactory.getLogger(Utils.class);
-
+    
     static String getKeyForValue(Map<String, List<String>> refMap, String internalId) {
 
         Iterator<String> iterator = refMap.keySet().iterator();
@@ -64,7 +64,7 @@ public class Utils {
         return null;
     }
 
-    public static File createTempDirectory() throws IOException {
+    static File createTempDirectory() throws IOException {
         final File temp;
 
         temp = File.createTempFile("KnxProjParser", Long.toString(System.nanoTime()));
@@ -79,7 +79,7 @@ public class Utils {
         return (temp);
     }
 
-    public static void extract(File knxprojfile, File targetDir) {
+    static void extract(File knxprojfile, File targetDir) {
         try {
             if (!knxprojfile.exists()) {
                 throw new IllegalArgumentException("Given file '" + knxprojfile.getAbsolutePath() + "' does not exist");
@@ -214,6 +214,11 @@ public class Utils {
         gcalendar.setTime(d);
         XMLGregorianCalendar xmlDate = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcalendar);
         return xmlDate;
+    }
+    
+    public static Date xmlDateTimeToDate(XMLGregorianCalendar x) {
+        GregorianCalendar gcalendar = x.toGregorianCalendar();
+        return gcalendar.getTime();
     }
 
     /**

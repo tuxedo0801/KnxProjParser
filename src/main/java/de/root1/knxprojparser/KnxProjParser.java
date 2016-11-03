@@ -41,8 +41,12 @@ import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Properties;
+import java.util.Set;
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
 import org.slf4j.Logger;
@@ -62,6 +66,7 @@ public class KnxProjParser {
         Project12.class,
         Project13.class
     };
+    private Project project;
 
     private enum ExportProcess {
         /**
@@ -74,14 +79,6 @@ public class KnxProjParser {
     }
 
     private AbstractKnxParser parser;
-    private final File knxprojFile;
-
-    public KnxProjParser(File knxprojFile) throws FileNotFoundException {
-        if (!knxprojFile.exists()) {
-            throw new FileNotFoundException("File does not exist: " + knxprojFile.getAbsolutePath());
-        }
-        this.knxprojFile = knxprojFile;
-    }
 
     /**
      * parses the project. This might take some time ...
@@ -89,8 +86,11 @@ public class KnxProjParser {
      * @throws IOException
      * @throws JDOMException
      */
-    public void parse() throws IOException, FileNotSupportedException, ParseException {
+    public void parse(File knxprojFile) throws IOException, FileNotSupportedException, ParserException {
 
+        if (!knxprojFile.exists()) {
+            throw new FileNotFoundException("File does not exist: " + knxprojFile.getAbsolutePath());
+        }
         File knxProjFolder;
 
         // check if it's required to extract
@@ -120,7 +120,12 @@ public class KnxProjParser {
 
         if (parser != null) {
             log.debug("parser found: {}", parser.getClass().getName());
-            parser.parse();
+            try {
+                parser.parse();
+                project = parser.getProject();
+            } catch (ParseException ex) {
+                throw new ParserException(ex);
+            }
         } else {
             throw new FileNotSupportedException("The given knx project is not supported: " + knxprojFile.getAbsolutePath());
         }
@@ -150,13 +155,53 @@ public class KnxProjParser {
     }
 
     public Project getProject() {
-        if (parser == null || !parser.isParsed()) {
-            return null;
+        return project;
+    }
+    
+    public void readXml(File infile) throws ParserException {
+        if (!infile.exists()) {
+            throw new ParserException("file "+infile.getAbsolutePath()+" does nt exist.");
         }
-        return parser.getProject();
+        project = new Project();
+        try {
+            KnxProj knxProj = KnxProjXmlService.read(infile);
+            EtsDefined etsDefined = knxProj.getEtsDefined();
+            UserDefined userDefined = knxProj.getUserDefined();
+            de.root1.schema.knxproj._1.Project p = etsDefined.getProject();
+            project.setCreatedBy(p.getCreatedBy());
+            project.setName(p.getName());
+            project.setToolVersion(p.getToolVersion());
+            project.setLastModified(Utils.xmlDateTimeToDate(p.getLastModified()));
+            project.setProjectStart(Utils.xmlDateTimeToDate(p.getProjectStarted()));
+            
+            List<de.root1.schema.knxproj._1.GroupAddress> etsAddresses = etsDefined.getGroupAddresses().getGroupAddress();
+            List<de.root1.schema.knxproj._1.GroupAddress> userAddresses = userDefined.getGroupAddresses().getGroupAddress();
+            
+            Set<GroupAddress> gaSet = new HashSet<>();
+            
+            
+            for (de.root1.schema.knxproj._1.GroupAddress addr : etsAddresses) {
+                // replace = remove first, then add
+                GroupAddress ga = new GroupAddress(addr.getAddress(), addr.getName(), addr.getDPT());
+                gaSet.remove(ga);
+                gaSet.add(ga);
+            }
+            for (de.root1.schema.knxproj._1.GroupAddress addr : userAddresses) {
+                // replace = remove first, then add
+                GroupAddress ga = new GroupAddress(addr.getAddress(), addr.getName(), addr.getDPT());
+                gaSet.remove(ga);
+                gaSet.add(ga);
+            }
+            
+            project.setGroupaddressList(new ArrayList<GroupAddress>(gaSet));
+            
+            
+        } catch (JAXBException | SAXException ex) {
+            throw new ParserException("Not able to read xml", ex);
+        }
     }
 
-    public boolean exportXml(File outfile) throws ExportException {
+    public boolean exportXml(File knxprojFile, File outfile) throws ParserException {
         String newChecksum = "notAvailable";
         if (knxprojFile.isFile()) {
             try {
@@ -181,6 +226,7 @@ public class KnxProjParser {
                     log.info("Existing outfile has DIFFERENT checksum. Update required.");
                 } else {
                     log.info("Existing outfile has SAME checksum. No operation required.");
+                    readXml(outfile);
                     /* !!! RETURN due to no operation required !!! */
                     return false;
                 }
@@ -198,14 +244,15 @@ public class KnxProjParser {
         if (parser == null || !parser.isParsed()) {
             log.debug("Parsing ...");
             try {
-                parse();
-            } catch (ParseException | IOException | FileNotSupportedException ex) {
-                throw new ExportException("Error parsing project", ex);
+                parse(knxprojFile);
+            } catch (IOException | FileNotSupportedException ex) {
+                throw new ParserException("Error parsing project", ex);
             }
             log.debug("Parsing ... *DONE*");
         }
 
-        Project parsed = getProject();
+        Project parsed = this.project;
+        
         EtsDefined etsDefined = knxproj.getEtsDefined();
         UserDefined userDefined = knxproj.getUserDefined();
         etsDefined.setChecksum(newChecksum);
@@ -275,7 +322,7 @@ public class KnxProjParser {
             KnxProjXmlService.write(outfile, knxproj);
             log.debug("Exported to {}", outfile.getAbsolutePath());
         } catch (JAXBException | SAXException ex) {
-            throw new ExportException("Error writing file " + outfile.getAbsolutePath(), ex);
+            throw new ParserException("Error writing file " + outfile.getAbsolutePath(), ex);
         }
         return true;
     }
@@ -300,7 +347,7 @@ public class KnxProjParser {
     private static final Properties props;
 
     static {
-        InputStream resourceAsStream = KnxProjParser.class.getResourceAsStream("/application.properties");
+        InputStream resourceAsStream = KnxProjParser.class.getResourceAsStream("/knxproj-parser.properties");
         props = new Properties();
         try {
             props.load(resourceAsStream);
@@ -325,7 +372,7 @@ public class KnxProjParser {
         
     }
 
-    public static void main(String[] args) throws FileNotFoundException, ExportException, IOException, FileNotSupportedException, ParseException {
+    public static void main(String[] args) throws FileNotFoundException, ParserException, IOException, FileNotSupportedException {
         System.out.println("["+props.getProperty("name", "KnxProjParser")+"]");
         File f = new File(args[0]);
         
@@ -337,7 +384,7 @@ public class KnxProjParser {
         Thread t0 = new Thread(new Dots());
         t0.setDaemon(true);
         t0.start();
-        KnxProjParser parser = new KnxProjParser(new File(args[0]));
+        KnxProjParser parser = new KnxProjParser();
         t0.interrupt();
         System.out.println(" OK");
         
@@ -345,19 +392,23 @@ public class KnxProjParser {
         Thread t1 = new Thread(new Dots());
         t1.setDaemon(true);
         t1.start();
-        parser.parse();
+        parser.parse(new File(args[0]));
         System.out.println(" OK");
         
         System.out.print("Exporting ");
         Thread t2 = new Thread(new Dots());
         t2.setDaemon(true);
         t2.start();
-        boolean result = parser.exportXml(new File(args[0] + ".parsed.xml"));
+        boolean result = parser.exportXml(new File(args[0]), new File(args[0] + ".parsed.xml"));
         t2.interrupt();
         System.out.println((result?" OK":" Same file already present, no export required."));
         
         System.out.println("DONE!");
         System.out.println("");
+    }
+    
+    public static boolean hasDPT(GroupAddress ga) {
+        return ga.getDPT()!=null && !ga.getDPT().isEmpty() && !ga.getDPT().equals("0.000");
     }
 
 }

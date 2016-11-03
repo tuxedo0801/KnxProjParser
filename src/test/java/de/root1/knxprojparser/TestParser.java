@@ -18,15 +18,10 @@
  */
 package de.root1.knxprojparser;
 
-import de.root1.knxprojparser.project.ParseException;
 import de.root1.logging.JulFormatter;
 import java.io.File;
 import java.io.IOException;
-import java.util.Enumeration;
 import java.util.List;
-import java.util.logging.Handler;
-import java.util.logging.Level;
-import java.util.logging.LogManager;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -61,11 +56,11 @@ public class TestParser {
     }
 
     @Test
-    public void testETS4_2_0() throws IOException, FileNotSupportedException, ParseException {
+    public void testETS4_2_0() throws IOException, FileNotSupportedException, ParserException {
 
         File f = new File(getClass().getResource("/ETS-Samples/ETS4.2.0-KnxProjParser-ExampleProject").getFile().replace("%20", " "));
-        KnxProjParser parser = new KnxProjParser(f);
-        parser.parse();
+        KnxProjParser parser = new KnxProjParser();
+        parser.parse(f);
         Project project = parser.getProject();
         List<GroupAddress> gaList = project.getGroupaddressList();
         for (GroupAddress groupAddress : gaList) {
@@ -74,10 +69,10 @@ public class TestParser {
     }
 
     @Test
-    public void testETS5_0_8() throws IOException, FileNotSupportedException, ParseException {
+    public void testETS5_0_8() throws IOException, FileNotSupportedException, ParserException {
         File f = new File(getClass().getResource("/ETS-Samples/ETS5.0.8-KnxProjParser-ExampleProject").getFile().replace("%20", " "));
-        KnxProjParser parser = new KnxProjParser(f);
-        parser.parse();
+        KnxProjParser parser = new KnxProjParser();
+        parser.parse(f);
         Project project = parser.getProject();
         List<GroupAddress> gaList = project.getGroupaddressList();
         for (GroupAddress groupAddress : gaList) {
@@ -86,10 +81,10 @@ public class TestParser {
     }
 
     @Test
-    public void testETS5_5_1() throws IOException, FileNotSupportedException, ParseException {
+    public void testETS5_5_1() throws IOException, FileNotSupportedException, ParserException {
         File f = new File(getClass().getResource("/ETS-Samples/ETS5.5.1-KnxProjParser-ExampleProject").getFile().replace("%20", " "));
-        KnxProjParser parser = new KnxProjParser(f);
-        parser.parse();
+        KnxProjParser parser = new KnxProjParser();
+        parser.parse(f);
         Project project = parser.getProject();
         List<GroupAddress> gaList = project.getGroupaddressList();
         for (GroupAddress groupAddress : gaList) {
@@ -98,16 +93,16 @@ public class TestParser {
     }
 
     @Test
-    public void testETS4_2_0_export() throws IOException, FileNotSupportedException, ParseException, ExportException {
+    public void testETS4_2_0_export() throws IOException, FileNotSupportedException, ParserException {
         File f = new File(getClass().getResource("/ETS-Samples/ETS4.2.0-KnxProjParser-ExampleProject").getFile().replace("%20", " "));
-        KnxProjParser parser = new KnxProjParser(f);
+        KnxProjParser parser = new KnxProjParser();
         File out = File.createTempFile("KnxProjParserExportTest", ".xml");
-        parser.exportXml(out);
+        parser.exportXml(f, out);
         out.delete();
     }
     
     @Test
-    public void testMain() throws IOException, FileNotSupportedException, ParseException, ExportException {
+    public void testMain() throws IOException, FileNotSupportedException, ParserException {
         File f = new File(getClass().getResource("/ETS-Samples/ETS4.2.0-KnxProjParser-ExampleProject").getFile().replace("%20", " "));
         KnxProjParser.main(new String[]{f.getAbsolutePath()});
         File fout = new File(f.getAbsolutePath()+".parsed.xml");

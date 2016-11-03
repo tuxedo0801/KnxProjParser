@@ -18,6 +18,8 @@
  */
 package de.root1.knxprojparser;
 
+import java.util.Objects;
+
 
 /**
  *
@@ -57,6 +59,28 @@ public class GroupAddress {
     @Override
     public String toString() {
         return "GroupAddress{" + "ga=" + ga + ", name=" + name + ", dpt=" + dpt + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.ga);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final GroupAddress other = (GroupAddress) obj;
+        if (!Objects.equals(this.ga, other.ga)) {
+            return false;
+        }
+        return true;
     }
     
     

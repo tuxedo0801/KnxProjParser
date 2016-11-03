@@ -22,20 +22,20 @@ package de.root1.knxprojparser;
  *
  * @author achristian
  */
-class ExportException extends Exception {
+class ParserException extends Exception {
 
-    public ExportException() {
+    public ParserException() {
     }
 
-    public ExportException(String message) {
+    public ParserException(String message) {
         super(message);
     }
 
-    public ExportException(String message, Throwable cause) {
+    public ParserException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public ExportException(Throwable cause) {
+    public ParserException(Throwable cause) {
         super(cause);
     }
 
