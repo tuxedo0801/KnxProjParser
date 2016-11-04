@@ -242,7 +242,7 @@ public class KnxProjParser {
 
         // at this stage it's clear, that project has to be parsed, either due to update or new
         if (parser == null || !parser.isParsed()) {
-            log.debug("Parsing ...");
+            log.info("Parsing file");
             try {
                 parse(knxprojFile);
             } catch (IOException | FileNotSupportedException ex) {
