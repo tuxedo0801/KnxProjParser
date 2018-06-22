@@ -313,6 +313,7 @@
         <xsd:attribute name="VisibleDescription" type="xsd:string"/>
         <xsd:attribute name="OriginalManufacturer" type="xsd:string"/>
         <xsd:attribute name="HelpTopic" type="xsd:string"/>
+        <xsd:attribute name="ReplacesVersions" type="xsd:string"/>
     </xsd:complexType>
     <xsd:complexType name="Static">
         <xsd:all>
