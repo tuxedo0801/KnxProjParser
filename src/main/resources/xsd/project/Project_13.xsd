@@ -17,8 +17,17 @@
  *
  *   You should have received a copy of the GNU General Public License
  *   along with KnxProjParser.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *   MS_20180822
+ *   extended for ETS5 Version 5.5x and above
+ *   
+ *   KNX Documentation
+ *   Version 1.7 2016.06.01 updates due to change to XML scheme 1.3 (ETS5) for version 5.5.x
+ *   https://de.scribd.com/document/341158120/KNX-XML-Project-Schema-v17-Description 
+ *
  */
--->
+ -->
+
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://knx.org/xml/project/13" 
             targetNamespace="http://knx.org/xml/project/13" 
@@ -223,6 +232,9 @@
         <xsd:attribute name="ReadMaxRoutingAPDULength" type="xsd:string"/>
         <xsd:attribute name="LastUsedAPDULength" type="xsd:string"/>
         <xsd:attribute name="SerialNumber" type="xsd:string"/>
+        
+        <!-- MS_20180822 -->
+        <xsd:attribute name="ReadMaxAPDULength" type="xsd:string"/>
     </xsd:complexType>
     <xsd:complexType name="ParameterInstanceRefs">
         <!-- ignore any content of this Element -->
@@ -519,9 +531,13 @@
     </xsd:complexType>
     <xsd:complexType name="Security">
         <!-- ignore any content of this Element -->
+   		<!--  MS_20180822 add attributes to avoid parser errors
         <xsd:sequence maxOccurs="unbounded" minOccurs="0">
-            <xsd:any processContents="lax"/>
+            <xsd:any processContents="lax"/> 
         </xsd:sequence>
+	    -->
+	     <xsd:attribute name="SequenceNumber" type="xsd:string"/>
+	     <xsd:attribute name="SequenceNumberTimestamp" type="xsd:string"/>
     </xsd:complexType>
     <xsd:complexType name="BinaryData">
         <!-- ignore any content of this Element -->
