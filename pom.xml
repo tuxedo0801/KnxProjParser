@@ -23,7 +23,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.root1</groupId>
     <artifactId>knxproj-parser</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
     <name>${project.build.finalName}</name>
     <properties>
