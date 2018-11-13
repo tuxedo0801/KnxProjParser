@@ -23,6 +23,7 @@ import de.root1.knxprojparser.project.ParseException;
 import de.root1.knxprojparser.project.Project11;
 import de.root1.knxprojparser.project.Project12;
 import de.root1.knxprojparser.project.Project13;
+import de.root1.knxprojparser.project.Project14;
 import de.root1.schema.knxproj._1.EtsDefined;
 import de.root1.schema.knxproj._1.KnxProj;
 import de.root1.schema.knxproj._1.ObjectFactory;
@@ -64,7 +65,8 @@ public class KnxProjParser {
     private static final Class[] AVAILABLE_PARSERS = {
         Project11.class,
         Project12.class,
-        Project13.class
+        Project13.class,
+        Project14.class
     };
     private Project project;
 
@@ -127,7 +129,7 @@ public class KnxProjParser {
                 throw new ParserException(ex);
             }
         } else {
-            throw new FileNotSupportedException("The given knx project is not supported: " + knxprojFile.getAbsolutePath());
+            throw new FileNotSupportedException("The given knx project is not supported. Maybe XML Schema is too new? " + knxprojFile.getAbsolutePath());
         }
 
         if (knxprojFile.isFile()) {

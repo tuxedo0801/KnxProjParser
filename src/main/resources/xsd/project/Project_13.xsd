@@ -81,7 +81,7 @@
     <xsd:complexType name="Installation">
         <xsd:sequence>
             <xsd:element name="Topology" type="tns:Topology"/>
-            <xsd:element name="Buildings" type="tns:Buildings"/>
+            <xsd:element name="Buildings" type="tns:Buildings" minOccurs="0"/>
             <xsd:element name="GroupAddresses" type="tns:GroupAddresses"/>
             <xsd:element name="Trades" type="tns:Trades" minOccurs="0"/>
         </xsd:sequence>
