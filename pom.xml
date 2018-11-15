@@ -23,7 +23,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.root1</groupId>
     <artifactId>knxproj-parser</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <packaging>jar</packaging>
     <name>${project.build.finalName}</name>
     <properties>
@@ -104,7 +104,7 @@
             <plugin>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-xjc-plugin</artifactId>
-                <version>3.2.1</version>
+                <version>3.2.3</version>
                 <configuration>
                     <extensions>
                         <extension>org.apache.cxf.xjcplugins:cxf-xjc-dv:2.3.0</extension>
