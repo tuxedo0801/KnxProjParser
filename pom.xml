@@ -28,8 +28,8 @@
     <name>${project.build.finalName}</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>10</maven.compiler.source>
+        <maven.compiler.target>10</maven.compiler.target>
     </properties>
     
     <build>
@@ -83,10 +83,10 @@
             </plugin>
             
             <!-- Plugin required to build java classes from XSD using XJC -->
-            <plugin>
+<!--            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jaxb2-maven-plugin</artifactId>
-                <version>2.2</version>
+                <version>2.4</version>
                 <executions>
                     <execution>
                         <goals>
@@ -99,6 +99,60 @@
                         <source>src/main/resources/xsd</source>
                     </sources>
                 </configuration>
+            </plugin>-->
+            
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-xjc-plugin</artifactId>
+                <version>3.2.1</version>
+                <configuration>
+                    <extensions>
+                        <extension>org.apache.cxf.xjcplugins:cxf-xjc-dv:2.3.0</extension>
+                    </extensions>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>generate-sources</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>xsdtojava</goal>
+                        </goals>
+                        <configuration>
+                            <sourceRoot>${basedir}/target/generated-sources/jaxb</sourceRoot>
+                            <xsdOptions>
+                                <xsdOption>
+                                    <xsd>${basedir}/src/main/resources/xsd/KnxProj_1.xsd</xsd>
+                                    <packagename>de.root1.schema.knxproj._1</packagename>
+                                </xsdOption>
+                                
+                                <xsdOption>
+                                    <xsd>${basedir}/src/main/resources/xsd/project/Project_11.xsd</xsd>
+                                    <packagename>org.knx.xml.project._11</packagename>
+                                </xsdOption>
+                                <xsdOption>
+                                    <xsd>${basedir}/src/main/resources/xsd/project/Project_12.xsd</xsd>
+                                    <packagename>org.knx.xml.project._12</packagename>
+                                </xsdOption>
+                                <xsdOption>
+                                    <xsd>${basedir}/src/main/resources/xsd/project/Project_13.xsd</xsd>
+                                    <packagename>org.knx.xml.project._13</packagename>
+                                </xsdOption>
+                                <xsdOption>
+                                    <xsd>${basedir}/src/main/resources/xsd/project/Project_14.xsd</xsd>
+                                    <packagename>org.knx.xml.project._14</packagename>
+                                </xsdOption>
+                                
+                            </xsdOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.sun.activation</groupId>
+                        <artifactId>javax.activation</artifactId>
+                        <version>1.2.0</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             
             <plugin>
@@ -142,6 +196,19 @@
             <version>1.0.1</version>
             <scope>test</scope>
         </dependency>
+        
+        <!-- since java9 no longer part of jre/jdk -->
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>2.3.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.activation</groupId>
+            <artifactId>javax.activation</artifactId>
+            <version>1.2.0</version>
+        </dependency>        
+        
     </dependencies>
     
         
